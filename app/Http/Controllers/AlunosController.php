@@ -158,13 +158,22 @@ class AlunosController extends Controller
     }
     public function ultimaAva(Aluno $aluno)
     {
+        
         $ava = Aluno::find($aluno->id)->avaliacao()->latest()->first();
-        return view('ultimaAvaliacao',compact('ava','aluno'));
+        if($ava)
+        {
+            return view('ultimaAvaliacao',compact('ava','aluno'));
+        }
+        else{
+            return redirect()->back()->with('semAvaliacao', 'Este Aluno não possui nenhuma avaliação física');;
+        }
+        
     }
 
-    public function mostraAva(Avaliacao $ava)
+    public function mostraAva($id)
     {
-        $aluno = Avaliacao::find($ava->aluno_id)->aluno;
+        $ava = Avaliacao::find($id);
+        $aluno = $ava->aluno;
         return view('mostrarAvaliacao',compact('ava','aluno'));
     }
 }

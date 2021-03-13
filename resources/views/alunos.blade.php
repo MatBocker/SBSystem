@@ -15,6 +15,12 @@ thead{
 color: white;
 background-color: #303030;
 }
+
+.h4, .h5 {
+  display:inline;
+  }
+
+  
 </style>
 </head>
 <h1 class="text-center"> Alunos </h1> <hr>
@@ -58,18 +64,20 @@ background-color: #303030;
         <a href="{{route('alunos.edit',$alunos->id)}}">
           <button class="btn btn-primary">Editar</button>
         </a>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Avaliação</button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal{{$alunos->id}}">Avaliação</button>
+        <div class="modal fade" id="exampleModal{{$alunos->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Avaliação Física</h3>
+        <h2 class="modal-title" id="exampleModalLabel">Avaliação Física</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        O que deseja fazer?
+      <p class="h4"><strong>Ultima avaliação:</strong></p> <p class="h5">Veja a ultima avaliação física feita no aluno.</p><br><br>
+      <p class="h4"><strong>Fazer avaliação física:</strong></p> <p class="h5">Faça uma nova avaliação física no aluno.</p><br><br>
+      <p class="h4"><strong>Histórico de avaliações:</strong></p><p class="h5"> Veja todas a avaliações físicas já feita no aluno.</p><br><br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" data-dismiss="modal">Voltar</button>
@@ -98,5 +106,18 @@ background-color: #303030;
     @endforeach
   </tbody>
 </table>
+@if(session('semAvaliacao'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>{{session('semAvaliacao')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
+@endif
+</div>
+<script>
+$(".alert-dismissible").fadeTo(3000, 500).slideUp(500, function(){
+    $(".alert-dismissible").remove();
+});
+</script>
 @endsection

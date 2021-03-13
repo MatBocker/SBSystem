@@ -4,15 +4,15 @@
 <title>Ultima Avaliação</title>
 </head>
 <link rel="stylesheet" href="../../site/style.css">
-<h1 class="text-center"> Ultima Avaliação Física de {{$aluno->nome}} </h1> <hr>
+<h1 class="text-center"> Avaliação Física de {{$aluno->nome}} </h1> <hr>
 <div class="text-center">
-        <a href="{{route('alunos.index')}}">
+        <a href="{{route('alunos.ava',$aluno->id)}}">
           <button class="btn btn-secondary">Voltar</button>
         </a>
       </div>  
 <div class="container">
 <hr>
-<h2 >Dados Pessoais:</h2>
+<h2 >Dados Pessoais:</h2><br>
 <div class="h4">
 <span>Matricula: {{$aluno->id}}</span><br><br>   
 <span>Nome: {{$aluno->nome}}</span><br><br>
@@ -24,7 +24,7 @@
 <span>Data: {{$ava->created_at}}</span><br><br>       
 </div>
 <hr>
-<h2 >Perimetria (cm):</h2>
+<h2 >Perimetria (cm):</h2><br>
 <div class="h4">
 <span>Tórax: {{$ava->torax}}</span><br><br>
 <span>Cintura: {{$ava->cintura}}</span><br><br>
@@ -36,7 +36,7 @@
 <span>Antebraço: {{$ava->antebraco}}</span><br><br>                          
 </div>
 <hr>
-<h2 >Plicometria (mm):</h2>
+<h2 >Plicometria (mm):</h2><br>
 <div class="h4">
 <span>Tríceps: {{$ava->triceps}}</span><br><br>
 <span>Subescapular: {{$ava->subescapular}}</span><br><br>   
@@ -48,7 +48,7 @@
 <span>Soma Total: {{$ava->somaMM}}</span><br><br>                 
 </div>
 <hr>
-<h2 >Resultados:</h2>
+<h2 >Resultados:</h2><br>
 <div class="h4">
 <span>IMC: {{$ava->imc}}</span><br><br>
 <span>ICQ: {{$ava->icq}}</span><br><br>
