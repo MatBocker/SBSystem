@@ -6,6 +6,15 @@
 .deletas{
   display:inline;
 }
+
+table {
+  margin-top: 30px;
+}
+
+thead{
+color: white;
+background-color: #303030;
+}
 </style>
 </head>
 <h1 class="text-center"> Alunos </h1> <hr>
@@ -18,7 +27,7 @@
         </a>
       </div>  
  <div class="container">     
-<table class="table text-center ">
+<table class="table text-center table-bordered ">
   <thead class="text-center">
     <tr>
       <th scope="col" class="text-center">Matricula</th>
@@ -49,10 +58,34 @@
         <a href="{{route('alunos.edit',$alunos->id)}}">
           <button class="btn btn-primary">Editar</button>
         </a>
-        <a href="{{route('alunos.ava',$alunos->id)}}">
-          <button class="btn btn-primary">Avaliações</button>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Avaliação</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Avaliação Física</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        O que deseja fazer?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Voltar</button>
+        <a href="{{route('alunos.ultimaAva',$alunos->id)}}">
+          <button class="btn btn-primary">Ultima avaliação</button>
         </a>
-       
+        <a href="#">
+          <button class="btn btn-success">Fazer avaliação física</button>
+        </a>
+        <a href="{{route('alunos.ava',$alunos->id)}}">
+          <button class="btn btn-warning">Histórico de avaliações</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
       <form class="deletas" action="{{route('alunos.destroy',$alunos->id)}}" method="POST">  
         @method('delete')
         @CSRF

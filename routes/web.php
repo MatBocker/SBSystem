@@ -31,4 +31,6 @@ Route::resource('planos','PlanosController');
 Route::get('desativados', 'PlanosController@desativados')->name('planos.desativados');
 Route::patch('planos/restore/{id}', 'PlanosController@restore')->name('planos.restore');
 Route::get('alunos/{aluno}/ava', 'AlunosController@ava')->name('alunos.ava');
+Route::get('alunos/{aluno}/ultimaAva', 'AlunosController@ultimaAva')->name('alunos.ultimaAva');
+Route::get('alunos/{aluno}/mostraAva', 'AlunosController@mostraAva')->name('alunos.mostraAva');
 });

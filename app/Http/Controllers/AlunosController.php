@@ -156,4 +156,15 @@ class AlunosController extends Controller
         $avaliacoes = Aluno::find($aluno->id)->avaliacao;
         return view('avaliacoesAluno',compact('avaliacoes','aluno'));
     }
+    public function ultimaAva(Aluno $aluno)
+    {
+        $ava = Aluno::find($aluno->id)->avaliacao()->latest()->first();
+        return view('ultimaAvaliacao',compact('ava','aluno'));
+    }
+
+    public function mostraAva(Avaliacao $ava)
+    {
+        $aluno = Avaliacao::find($ava->aluno_id)->aluno;
+        return view('mostrarAvaliacao',compact('ava','aluno'));
+    }
 }
