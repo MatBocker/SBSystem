@@ -30,4 +30,5 @@ Route::get('cadastrar', 'AlunosController@cadastrar')->name('alunos.cadastrar');
 Route::resource('planos','PlanosController');
 Route::get('desativados', 'PlanosController@desativados')->name('planos.desativados');
 Route::patch('planos/restore/{id}', 'PlanosController@restore')->name('planos.restore');
+Route::get('alunos/{aluno}/ava', 'AlunosController@ava')->name('alunos.ava');
 });

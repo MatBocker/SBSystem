@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Aluno;
 use App\Models\Treino;
 use App\Models\Plano;
+use App\Models\Avaliacao;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -148,5 +149,11 @@ class AlunosController extends Controller
         $planos = Plano::all();
         return view('criarAluno', compact('treinos','planos'));
         
+    }
+
+    public function ava(Aluno $aluno)
+    {
+        $avaliacoes = Aluno::find($aluno->id)->avaliacao;
+        return view('avaliacoesAluno',compact('avaliacoes','aluno'));
     }
 }

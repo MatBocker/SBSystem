@@ -2,7 +2,11 @@
 @section('tudo')
 <head>
 <title>Alunos</title>
-
+<style>
+.deletas{
+  display:inline;
+}
+</style>
 </head>
 <h1 class="text-center"> Alunos </h1> <hr>
       <div class="text-center">
@@ -45,8 +49,11 @@
         <a href="{{route('alunos.edit',$alunos->id)}}">
           <button class="btn btn-primary">Editar</button>
         </a>
+        <a href="{{route('alunos.ava',$alunos->id)}}">
+          <button class="btn btn-primary">Avaliações</button>
+        </a>
        
-      <form class="form-inline" action="{{route('alunos.destroy',$alunos->id)}}" method="POST">  
+      <form class="deletas" action="{{route('alunos.destroy',$alunos->id)}}" method="POST">  
         @method('delete')
         @CSRF
         <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja desativar o aluno? ')">Desativar</button>
