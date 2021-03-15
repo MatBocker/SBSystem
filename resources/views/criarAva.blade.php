@@ -34,12 +34,16 @@ input::-webkit-inner-spin-button {
     </div>
     <div class="col-md-2">
       <label for="peso">Peso</label>
-      <input name="peso" type="text" onkeyup="calcular_imc()" pattern="[^.,?//a-zA-Z][0-9]*\.?[0-9]{1,2}" title="Apenas números, um ponto , uma ou duas casas decimais!" class="form-control" id="peso" placeholder="" required>
+      <input name="peso" type="text" onkeyup="calcular_imc(); pesogordura()" pattern="[^.,?//a-zA-Z][0-9]*\.?[0-9]{1,2}" title="Apenas números, um ponto , uma ou duas casas decimais!" class="form-control" id="peso" placeholder="" required>
     </div>
     
     <div class="col-md-2">
       <label for="altura">Altura</label>
       <input name="altura" type="text" onkeyup="calcular_imc()" pattern="[^.,?//a-zA-Z][0-9]*\.?[0-9]{1,2}" title="Apenas números, um ponto , uma ou duas casas decimais!" class="form-control" id="altura" placeholder="" required>
+    </div>
+    <div class="col-md-2">
+      <label for="modalidade">Modalidade</label>
+      <input name="modalidade" type="text" pattern="^[a-zA-Z\u00C0-\u00FF ]*$" title="Apenas letras!" class="form-control" id="modalidade" placeholder="" required>
     </div>
     </div>
     <br><div class="form-group yeah">
@@ -50,7 +54,7 @@ input::-webkit-inner-spin-button {
     </div>
     <div class="col-md-2">
       <label for="cintura">Cintura</label>
-      <input name="cintura" type="text"   pattern="[^.,?//a-zA-Z][0-9]*\.?[0-9]{1,2}" title="Apenas números, um ponto , uma ou duas casas decimais!" class="form-control" id="cintura" placeholder="" required><br>
+      <input name="cintura" type="text" onkeyup="calcular_icq()"  pattern="[^.,?//a-zA-Z][0-9]*\.?[0-9]{1,2}" title="Apenas números, um ponto , uma ou duas casas decimais!" class="form-control" id="cintura" placeholder="" required><br>
     </div>
     <div class="col-md-2">
       <label for="abdomem">Abdômem</label>
@@ -58,7 +62,7 @@ input::-webkit-inner-spin-button {
     </div>
     <div class="col-md-2">
       <label for="quadril">Quadril</label>
-      <input name="quadril" type="text"  pattern="[^.,?//a-zA-Z][0-9]*\.?[0-9]{1,2}" title="Apenas números, um ponto , uma ou duas casas decimais!" class="form-control" id="quadril" placeholder="" required><br>
+      <input name="quadril" type="text" onkeyup="calcular_icq()"  pattern="[^.,?//a-zA-Z][0-9]*\.?[0-9]{1,2}" title="Apenas números, um ponto , uma ou duas casas decimais!" class="form-control" id="quadril" placeholder="" required><br>
     </div>
     <div class="col-md-2">
       <label for="coxa">Coxa</label>
@@ -119,16 +123,16 @@ input::-webkit-inner-spin-button {
       <input name="imc" type="text" class="form-control" id="imc" placeholder="" readonly="readonly"><br>
     </div>
     <div class="col-md-2">
-      <label for="iqc">ICQ</label>
-      <input name="iqc" type="text" class="form-control" id="iqc" placeholder="" readonly="readonly"><br>
+      <label for="icq">ICQ</label>
+      <input name="icq" type="text" class="form-control" id="icq" placeholder="" readonly="readonly"><br>
     </div>
     <div class="col-md-2">
       <label for="gord">% de Gordura</label>
-      <input name="gord" type="text" class="form-control" id="gord" placeholder="" readonly="readonly"><br>
+      <input name="gord" type="text" onkeyup="pesogordura()"  pattern="[^.,?//a-zA-Z][0-9]*\.?[0-9]{1,2}" title="Apenas números, um ponto , uma ou duas casas decimais!" class="form-control" id="gord" placeholder=""><br>
     </div>
     <div class="col-md-2">
       <label for="gordideal">% de Gordura Ideal</label>
-      <input name="gordideal" type="text" class="form-control" id="gordideal" placeholder="" readonly="readonly"><br>
+      <input name="gordideal" type="text" pattern="[^.,?//a-zA-Z][0-9]*\.?[0-9]{1,2}" title="Apenas números, um ponto , uma ou duas casas decimais!" class="form-control" id="gordideal" placeholder=""><br>
     </div>
     <div class="col-md-2">
       <label for="massa">Massa Magra</label>
@@ -147,6 +151,7 @@ input::-webkit-inner-spin-button {
       <input name="exgord" type="text" class="form-control" id="exgord" placeholder="" readonly="readonly"><br>
     </div>
     </div>
+    <input name="sexo" type="hidden" class="form-control" id="sexo" placeholder="" value="{{$aluno->sexo}}"><br>
 </form>
 @endsection
 <<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -172,6 +177,36 @@ input::-webkit-inner-spin-button {
             var result = parseFloat(valor1) / parseFloat(quadrado);
             if (!isNaN(result)) {
                 document.getElementById('imc').value = result.toFixed(1);
+            }
+            var result2 = 22.26*parseFloat(quadrado);
+            if (!isNaN(result2)) {
+                document.getElementById('pesoideal').value = result2.toFixed(1);
+            }
+            var result3 = parseFloat(valor1) - parseFloat(result2);
+            if (!isNaN(result3)) {
+                document.getElementById('exgord').value = result3.toFixed(1);
+            }
+        }
+        function calcular_icq() {
+            var valor1 = document.getElementById('cintura').value;
+            var valor2 = document.getElementById('quadril').value;
+            var result = parseFloat(valor1) / parseFloat(valor2);
+            if (!isNaN(result)) {
+                document.getElementById('icq').value = result.toFixed(2);
+            }
+        }
+
+        function pesogordura() {
+            var valor1 = document.getElementById('peso').value;
+            var valor2 = document.getElementById('gord').value;
+            var dividir = parseFloat(valor2)/ 100;
+            var result = parseFloat(valor1) * parseFloat(dividir);
+            if (!isNaN(result)) {
+                document.getElementById('pesogord').value = result.toFixed(1);
+            }
+            var result2 = parseFloat(valor1) - parseFloat(result);
+            if (!isNaN(result2)) {
+                document.getElementById('massa').value = result2.toFixed(1);
             }
         }
     </script>
