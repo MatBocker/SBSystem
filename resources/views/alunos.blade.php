@@ -20,6 +20,9 @@ background-color: #303030;
   display:inline;
   }
 
+.alert {
+  margin-top: 30px;
+}
   
 </style>
 </head>
@@ -31,8 +34,16 @@ background-color: #303030;
         <a href="{{route('alunos.desativadosA')}}">
           <button class="btn btn-secondary">Desativados</button>
         </a>
-      </div>  
- <div class="container">     
+      </div>
+ <div class="container">    
+ @if(session('semAvaliacao'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>{{session('semAvaliacao')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif 
 <table class="table text-center table-bordered ">
   <thead class="text-center">
     <tr>
@@ -84,7 +95,7 @@ background-color: #303030;
         <a href="{{route('alunos.ultimaAva',$alunos->id)}}">
           <button class="btn btn-primary">Ultima avaliação</button>
         </a>
-        <a href="#">
+        <a href="{{route('alunos.criarAva',$alunos->id)}}">
           <button class="btn btn-success">Fazer avaliação física</button>
         </a>
         <a href="{{route('alunos.ava',$alunos->id)}}">
@@ -106,14 +117,7 @@ background-color: #303030;
     @endforeach
   </tbody>
 </table>
-@if(session('semAvaliacao'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>{{session('semAvaliacao')}}</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-@endif
+
 </div>
 <script>
 $(".alert-dismissible").fadeTo(3000, 500).slideUp(500, function(){

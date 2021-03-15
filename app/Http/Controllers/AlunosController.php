@@ -176,4 +176,9 @@ class AlunosController extends Controller
         $aluno = $ava->aluno;
         return view('mostrarAvaliacao',compact('ava','aluno'));
     }
+
+    public function criarAva(Aluno $aluno)
+    {
+        return view('criarAva',compact('aluno'));
+    }
 }

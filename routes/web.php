@@ -33,4 +33,6 @@ Route::patch('planos/restore/{id}', 'PlanosController@restore')->name('planos.re
 Route::get('alunos/{aluno}/ava', 'AlunosController@ava')->name('alunos.ava');
 Route::get('alunos/{aluno}/ultimaAva', 'AlunosController@ultimaAva')->name('alunos.ultimaAva');
 Route::get('alunos/{aluno}/mostraAva', 'AlunosController@mostraAva')->name('alunos.mostraAva');
+Route::get('alunos/{aluno}/criarAva', 'AlunosController@criarAva')->name('alunos.criarAva');
+Route::put('alunos/{aluno}/avaliacaoCriar', 'AlunosController@avaliacaoCriar')->name('alunos.avaliacaoCriar');
 });
