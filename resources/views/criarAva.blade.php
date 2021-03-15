@@ -50,7 +50,7 @@ input::-webkit-inner-spin-button {
     <br><h2>Perimetria (cm):</h2>
     <div class="col-md-2">
       <label for="torax">Tórax</label>
-      <input name="torax" type="text"   pattern="[^.,?//a-zA-Z][0-9]*\.?[0-9]{1,2}" title="Apenas números, um ponto , uma ou duas casas decimais!" class="form-control" id="torax" placeholder="" required><br>
+      <input name="torax" type="text"  pattern="[^.,?//a-zA-Z][0-9]*\.?[0-9]{1,2}" title="Apenas números, um ponto , uma ou duas casas decimais!" class="form-control" id="torax" placeholder="" required><br>
     </div>
     <div class="col-md-2">
       <label for="cintura">Cintura</label>

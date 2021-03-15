@@ -181,4 +181,41 @@ class AlunosController extends Controller
     {
         return view('criarAva',compact('aluno'));
     }
+
+    public function avaliacaoCriar(Request $request ,$id)
+    {
+        $aluno = Aluno::find($id);
+        $ava = new Avaliacao;
+        $ava->idade=$request->idade;
+        $ava->peso=$request->peso;
+        $ava->altura=$request->altura;
+        $ava->imc=$request->imc;
+        $ava->pesoIdeal=$request->pesoideal;
+        $ava->torax=$request->torax;
+        $ava->cintura=$request->cintura;
+        $ava->abdomem=$request->abdomem;
+        $ava->quadril=$request->quadril;
+        $ava->coxa=$request->coxa;
+        $ava->panturilha=$request->pant;
+        $ava->braco=$request->braco;
+        $ava->antebraco=$request->antebraco;
+        $ava->triceps=$request->triceps;
+        $ava->subescapular=$request->subescapular;
+        $ava->peitoral=$request->peitoral;
+        $ava->axilar=$request->axilar;
+        $ava->suprailiaca=$request->suprailiaca;
+        $ava->abdominal=$request->abdominal;
+        $ava->coxaMM=$request->coxam;
+        $ava->somaMM=$request->soma;
+        $ava->icq=$request->icq;
+        $ava->gordura=$request->gord;
+        $ava->gorduraIdeal=$request->gordideal;
+        $ava->massaMagra=$request->massa;
+        $ava->pesoGordura=$request->pesogord;
+        $ava->excessoGordura=$request->exgord;
+        $ava->modalidade=$request->modalidade;
+
+        $aluno = $aluno->avaliacao()->save($ava);
+        return redirect()->route('alunos.index');
+    }
 }
