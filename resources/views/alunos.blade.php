@@ -44,6 +44,38 @@ background-color: #303030;
   </button>
 </div>
 @endif 
+@if(session('alunoDeletado'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{session('alunoDeletado')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif 
+@if(session('avaliacaoCriada'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{session('avaliacaoCriada')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif 
+@if(session('alunoEditado'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{session('alunoEditado')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif 
+@if(session('alunoCriado'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{session('alunoCriado')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif 
 <table class="table text-center table-bordered ">
   <thead class="text-center">
     <tr>

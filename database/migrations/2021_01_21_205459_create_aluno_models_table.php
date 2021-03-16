@@ -30,8 +30,8 @@ class CreateAlunoModelsTable extends Migration
             $table->string('complemento');
             $table->unsignedBigInteger('treino_id');
             $table->unsignedBigInteger('plano_id');
-            $table->foreign('treino_id')->references('id')->on('treinos')->onUpdate('cascade');
-            $table->foreign('plano_id')->references('id')->on('planos')->onUpdate('cascade');
+            $table->foreign('treino_id')->references('id')->on('treinos')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('plano_id')->references('id')->on('planos')->onUpdate('cascade')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

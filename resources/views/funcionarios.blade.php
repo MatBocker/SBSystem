@@ -41,13 +41,21 @@ background-color: #303030;
 </div>
 @endif
 @if(session('funcionarioDeletado'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
+<div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>{{session('funcionarioDeletado')}}</strong>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-@endif        
+@endif    
+@if(session('funcionarioCriado'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{session('funcionarioCriado')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif      
 <table class="table text-center table-bordered ">
   <thead class="text-center">
     <tr>

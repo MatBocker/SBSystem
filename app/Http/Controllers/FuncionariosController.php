@@ -65,7 +65,7 @@ class FuncionariosController extends Controller
         $usuario ->email=$request->email;
         $usuario->password = Hash::make($request->senha);
         $usuario ->save();
-        return redirect()->route('funcionarios.index');
+        return redirect()->route('funcionarios.index')->with('funcionarioCriado', 'Funcionário criado com sucesso!!');
     }
 
     /**
@@ -129,7 +129,7 @@ class FuncionariosController extends Controller
     {
         $funcionario=Funcionario::find($funcionario->id);
         $funcionario->delete();
-        return redirect()->route('funcionarios.index')->with('funcionarioDeletado', 'Funcionário deletado com sucesso!! Caso queria restaurar clique na aba desativados!');
+        return redirect()->route('funcionarios.index')->with('funcionarioDeletado', 'Funcionário desativado com sucesso!! Caso queria restaurar clique na aba desativados!');
     }
 
     public function desativadosF()

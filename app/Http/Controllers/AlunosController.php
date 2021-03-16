@@ -60,7 +60,7 @@ class AlunosController extends Controller
         $aluno->plano_id=$request->plano;
         $aluno->obs=$request->obs;
         $aluno->save();
-        return redirect()->route('alunos.index');
+        return redirect()->route('alunos.index')->with('alunoCriado', 'Aluno criado com sucesso!!');
     }
 
     /**
@@ -113,7 +113,7 @@ class AlunosController extends Controller
         $aluno->plano_id=$request->plano;
         $aluno->obs=$request->obs;
         $aluno->save();
-        return redirect()->route('alunos.index');
+        return redirect()->route('alunos.index')->with('alunoEditado', 'Alterações feita com sucesso!!');
     }
 
 
@@ -127,7 +127,7 @@ class AlunosController extends Controller
     {
         $aluno=Aluno::find($aluno->id);
         $aluno->delete();
-        return redirect()->route('alunos.index');
+        return redirect()->route('alunos.index')->with('alunoDeletado', 'Aluno desativado com sucesso!! Caso queria restaurar clique na aba desativados!');
     }
 
     public function desativadosA()
@@ -139,7 +139,7 @@ class AlunosController extends Controller
     public function restore($id)
     {
         Aluno::withTrashed()->where('id', $id)->restore();
-        return redirect()->route('alunos.index');
+        return redirect()->back()->with('alunoRestaurado', 'Aluno restaurado com sucesso!!');
         
     }
 
@@ -216,6 +216,6 @@ class AlunosController extends Controller
         $ava->modalidade=$request->modalidade;
 
         $aluno = $aluno->avaliacao()->save($ava);
-        return redirect()->route('alunos.index');
+        return redirect()->route('alunos.index')->with('avaliacaoCriada', 'Avaliação Física criada com sucesso!!');
     }
 }

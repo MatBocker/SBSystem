@@ -44,7 +44,7 @@ class PlanosController extends Controller
         $plano->tipo=$request->tipo;
         $plano->observacao=$request->obs;
         $plano->save();
-        return redirect()->route('planos.index');
+        return redirect()->route('planos.index')->with('planoCriado', 'Plano criado com sucesso!!');
     }
 
     /**
@@ -84,7 +84,7 @@ class PlanosController extends Controller
         $plano->tipo=$request->tipo;
         $plano->observacao=$request->obs;
         $plano->save();
-        return redirect()->route('planos.index');
+        return redirect()->route('planos.index')->with('planoEditado', 'Alterações feita com sucesso!!');
     }
 
     /**
@@ -96,8 +96,15 @@ class PlanosController extends Controller
     public function destroy(plano $plano)
     {
         $plano=plano::find($plano->id);
-        $plano->delete();
-        return redirect()->route('planos.index');
+        if ($plano -> aluno () -> count ()) 
+        { 
+            return redirect()->route('planos.index')->with('impossivelDeletarPlano', 'Impossivel desativar... Plano ja está no cadastro de um aluno!');
+        }
+        else{
+            $plano->delete();
+            return redirect()->route('planos.index')->with('planoDeletado', 'Plano desativado com sucesso!! Caso queria restaurar clique na aba desativados!');;
+        }  
+        
     }
 
     public function desativados()
@@ -109,7 +116,7 @@ class PlanosController extends Controller
     public function restore($id)
     {
         Plano::withTrashed()->where('id', $id)->restore();
-        return redirect()->route('planos.index');
+        return redirect()->back()->with('planoRestaurado', 'Plano restaurado com sucesso!!');
         
     }
 }
