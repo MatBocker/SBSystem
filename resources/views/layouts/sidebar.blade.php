@@ -39,7 +39,7 @@
                     <a href="{{route('planos.index')}}">Planos</a>
                 </li>
                 <li>
-                    <a href="#">Funcionários</a>
+                    <a href="{{route('funcionarios.index')}}">Funcionários</a>
                 </li>
 
                 <li>

@@ -58,7 +58,7 @@ class AlunosController extends Controller
         $aluno->complemento=$request->complemento;
         $aluno->treino_id=$request->treino;
         $aluno->plano_id=$request->plano;
-        $aluno->obs=$request->obs;;
+        $aluno->obs=$request->obs;
         $aluno->save();
         return redirect()->route('alunos.index');
     }

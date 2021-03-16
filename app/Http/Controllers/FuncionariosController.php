@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Funcionario;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Hash;
 
 class FuncionariosController extends Controller
 {
@@ -13,7 +19,8 @@ class FuncionariosController extends Controller
      */
     public function index()
     {
-        //
+        $funcionarios = DB::table('funcionarios')->get();
+        return view('funcionarios', ['funcionarios' => $funcionarios]);
     }
 
     /**
@@ -23,7 +30,8 @@ class FuncionariosController extends Controller
      */
     public function create()
     {
-        //
+     
+        return view('criarFuncionario');
     }
 
     /**
@@ -34,7 +42,30 @@ class FuncionariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $funcionario=new Funcionario();
+        $funcionario->nome=$request->nome;
+        $funcionario->rg=$request->rg;
+        $funcionario->cpf=$request->cpf;
+        $funcionario->telefone=$request->telefone;
+        $funcionario->email=$request->email;
+        $funcionario->nascimento=$request->data;
+        $funcionario->sexo=$request->sexo;
+        $funcionario->estado=$request->estado;
+        $funcionario->cidade=$request->cidade;
+        $funcionario->cep=$request->cep;
+        $funcionario->endereco=$request->endereco;
+        $funcionario->complemento=$request->complemento;
+        $funcionario->obs=$request->obs;
+        $funcionario->modalidade=$request->modalidade;
+        $funcionario->salario=$request->salario;
+        $funcionario->save();
+
+        $usuario = new User();
+        $usuario ->name=$request->nome;
+        $usuario ->email=$request->email;
+        $usuario->password = Hash::make($request->senha);
+        $usuario ->save();
+        return redirect()->route('funcionarios.index');
     }
 
     /**
@@ -43,9 +74,9 @@ class FuncionariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Funcionario $funcionario)
     {
-        //
+        return view('mostrarFuncionario',compact('funcionario'));
     }
 
     /**

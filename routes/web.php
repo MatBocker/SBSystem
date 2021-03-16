@@ -38,5 +38,6 @@ Route::put('alunos/avaliacaoCriar/{id}', 'AlunosController@avaliacaoCriar')->nam
 
 Route::middleware(['auth','dono'])->group(function() {
     Route::resource('planos','PlanosController');
-
+    Route::resource('funcionarios','FuncionariosController');
+    
 });
