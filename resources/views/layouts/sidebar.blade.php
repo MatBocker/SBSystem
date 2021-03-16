@@ -39,10 +39,7 @@
                     <a href="{{route('planos.index')}}">Planos</a>
                 </li>
                 <li>
-                    <a href="#">Despesas</a>
-                </li>
-                <li>
-                    <a href="#">Ganhos</a>
+                    <a href="#">Funcionários</a>
                 </li>
 
                 <li>
