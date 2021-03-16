@@ -2,45 +2,64 @@
 @section('tudo')
 <head>
 <title>Editar Aluno</title>
+<style>
+.grudado
+{
+    margin-top: 30px;
+}
+</style>
 </head>
 <link rel="stylesheet" href="../../site/style.css">
-<h1 class="text-center"> Editar {{ $aluno->nome }} </h1> <hr>
-<div class="container"> 
-<form action="{{route('alunos.update',$aluno->id)}}" method="POST">
+<h1 class="text-center"> Editar {{ $funcionario->nome }} </h1> <hr>
+<div class="text-center">
+<a href="{{route('funcionarios.index')}}">
+          <button class="btn btn-secondary">Voltar</button>
+        </a>
+<button type="submit" class="btn btn-primary" form="editarFunc">Editar</button>
+</div>
+<div class="container grudado"> 
+<form action="{{route('funcionarios.update',$funcionario->id)}}" method="POST" id="editarFunc">
 @method('PUT')
 @CSRF
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="nome">Nome</label>
-      <input name="nome" type="text" class="form-control" id="nome" value="{{ $aluno->nome }}" required>
+      <input name="nome" type="text" class="form-control" id="nome" value="{{ $funcionario->nome }}" required>
     </div>
-    
+    <div class="form-group col-md-6">
+      <label for="salario">Salario</label>
+      <input name="salario" type="text" class="form-control" id="salario" value="{{ $funcionario->salario }}" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="modalidade">Modalidade</label>
+      <input name="modalidade" type="text" class="form-control" id="modalidade" value="{{ $funcionario->modalidade }}" required>
+    </div>
     <div class="form-group col-md-4">
       <label for="rg">RG</label>
-      <input name="rg" type="text" class="form-control" id="rg" value="{{ $aluno->rg }}" required>
+      <input name="rg" type="text" class="form-control" id="rg" value="{{ $funcionario->rg }}" required>
     </div>
     <div class="form-group col-md-4">
       <label for="cpf">CPF</label>
-      <input name="cpf" type="text" class="form-control" id="cpf" value="{{ $aluno->cpf }}" required>
+      <input name="cpf" type="text" class="form-control" id="cpf" value="{{ $funcionario->cpf }}" required>
     </div>
   </div>
   <div class="form-group col-md-4">
       <label for="telefone">Telefone</label>
-      <input name="telefone" type="text" class="form-control" id="telefone" value="{{ $aluno->telefone }}" required>
+      <input name="telefone" type="text" class="form-control" id="telefone" value="{{ $funcionario->telefone }}" required>
     </div>
     <div class="form-group col-md-4">
       <label for="email">Email</label>
-      <input name="email" type="email" class="form-control" id="email" value="{{ $aluno->email }}" required>
+      <input name="email" type="email" class="form-control" id="email" value="{{ $funcionario->email }}" required>
     </div>
   <div class="form-group col-md-2">
       <label for="data">Data de Nascimento</label>
-      <input name="data" type="date" class="form-control" id="data" value="{{ $aluno->nascimento }}" required>
+      <input name="data" type="date" class="form-control" id="data" value="{{ $funcionario->nascimento }}" required>
     </div>
     <div class="form-group col-md-2">
       <label for="sexo">Sexo</label>
       <select name="sexo" id="sexo" class="form-control" required>
       
-        <option value="{{ $aluno->sexo }}" selected>{{ $aluno->sexo }}</option>
+        <option value="{{ $funcionario->sexo }}" selected>{{ $funcionario->sexo }}</option>
         <option value="Masculino">Masculino</option>
         <option value="Feminino">Feminino</option>
         </select>
@@ -48,7 +67,7 @@
     <div class="form-group col-md-3">
       <label for="estado">UF</label>
       <select name="estado" id="estado" class="form-control"  required>
-        <option value="{{ $aluno->estado }}" selected>{{ $aluno->estado }}</option>
+        <option value="{{ $funcionario->estado }}" selected>{{ $funcionario->estado }}</option>
         <option>Acre</option>
 	    <option>Alagoas</option>
 	    <option>Amapá</option>
@@ -80,43 +99,25 @@
     </div>
     <div class="form-group col-md-4">
       <label for="cidade">Cidade</label>
-      <input name="cidade" type="text" class="form-control" id="cidade" value="{{ $aluno->cidade }}" required>
+      <input name="cidade" type="text" class="form-control" id="cidade" value="{{ $funcionario->cidade }}" required>
     </div>
     <div class="form-group col-md-4">
       <label for="cep">Cep</label>
-      <input name="cep" type="text" class="form-control" id="cep" value="{{ $aluno->cep }}" required>
+      <input name="cep" type="text" class="form-control" id="cep" value="{{ $funcionario->cep }}" required>
     </div>
     <div class="form-group col-md-4">
       <label for="endereco">Endereço</label>
-      <input name="endereco" type="text" class="form-control" id="endereco" value="{{ $aluno->endereco }}" required>
+      <input name="endereco" type="text" class="form-control" id="endereco" value="{{ $funcionario->endereco }}" required>
     </div>
     <div class="form-group col-md-4">
       <label for="complemento">Complemento</label>
-      <input name="complemento" type="text" class="form-control" id="complemento" value="{{ $aluno->complemento }}" required>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="treino">Treinos</label>
-      <select name="treino" id="treino" class="form-control" required>
-      <option value="{{ $aluno->treino->id }}" selected>{{ $aluno->treino->titulo }}</option>
-        @foreach($treinos AS $treino)
-      <option value="{{ $treino->id }}">{{ $treino->titulo }}</option>
-        @endforeach
-        </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="plano">Planos</label>
-      <select name="plano" id="plano" class="form-control" required>
-      <option value="{{ $aluno->plano->id }}" selected>{{ $aluno->plano->nome }}</option>
-        @foreach($planos AS $plano)
-      <option value="{{ $plano->id }}">{{ $plano->nome }}</option>
-        @endforeach
-        </select>
+      <input name="complemento" type="text" class="form-control" id="complemento" value="{{ $funcionario->complemento }}" required>
     </div>
     <div class="form-group col-md-6">
     <label for="obs">Observação</label>
-    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none">{{ $aluno->obs }}</textarea>
+    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none">{{ $funcionario->obs }}</textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Editar</button>
+  
 </form>
 
 

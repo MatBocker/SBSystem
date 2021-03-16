@@ -27,8 +27,6 @@ Route::resource('treinos','TreinosController');
 Route::get('desativadosA', 'AlunosController@desativadosA')->name('alunos.desativadosA');
 Route::patch('alunos/restore/{id}', 'AlunosController@restore')->name('alunos.restore');
 Route::get('cadastrar', 'AlunosController@cadastrar')->name('alunos.cadastrar');
-Route::get('desativados', 'PlanosController@desativados')->name('planos.desativados');
-Route::patch('planos/restore/{id}', 'PlanosController@restore')->name('planos.restore');
 Route::get('alunos/{aluno}/ava', 'AlunosController@ava')->name('alunos.ava');
 Route::get('alunos/{aluno}/ultimaAva', 'AlunosController@ultimaAva')->name('alunos.ultimaAva');
 Route::get('alunos/{aluno}/mostraAva', 'AlunosController@mostraAva')->name('alunos.mostraAva');
@@ -37,7 +35,10 @@ Route::put('alunos/avaliacaoCriar/{id}', 'AlunosController@avaliacaoCriar')->nam
 });
 
 Route::middleware(['auth','dono'])->group(function() {
-    Route::resource('planos','PlanosController');
-    Route::resource('funcionarios','FuncionariosController');
-    
+Route::resource('planos','PlanosController');
+Route::resource('funcionarios','FuncionariosController');
+Route::get('desativados', 'PlanosController@desativados')->name('planos.desativados');
+Route::patch('planos/restore/{id}', 'PlanosController@restore')->name('planos.restore');
+Route::patch('funcionarios/restore/{id}', 'FuncionariosController@restore')->name('funcionarios.restore');
+Route::get('desativadosF', 'FuncionariosController@desativadosF')->name('funcionarios.desativadosF');
 });

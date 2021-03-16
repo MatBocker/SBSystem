@@ -85,9 +85,9 @@ class FuncionariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Funcionario $funcionario)
     {
-        //
+        return view('editarFuncionario',compact('funcionario'));
     }
 
     /**
@@ -97,9 +97,26 @@ class FuncionariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Funcionario $funcionario)
     {
-        //
+        $funcionario = Funcionario::find($funcionario->id);
+        $funcionario->nome=$request->nome;
+        $funcionario->rg=$request->rg;
+        $funcionario->cpf=$request->cpf;
+        $funcionario->telefone=$request->telefone;
+        $funcionario->email=$request->email;
+        $funcionario->nascimento=$request->data;
+        $funcionario->sexo=$request->sexo;
+        $funcionario->estado=$request->estado;
+        $funcionario->cidade=$request->cidade;
+        $funcionario->cep=$request->cep;
+        $funcionario->endereco=$request->endereco;
+        $funcionario->complemento=$request->complemento;
+        $funcionario->obs=$request->obs;
+        $funcionario->modalidade=$request->modalidade;
+        $funcionario->salario=$request->salario;
+        $funcionario->save();
+        return redirect()->route('funcionarios.index')->with('funcionarioEditado', 'Alterações feita com sucesso!');
     }
 
     /**
@@ -108,8 +125,23 @@ class FuncionariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Funcionario $funcionario)
     {
-        //
+        $funcionario=Funcionario::find($funcionario->id);
+        $funcionario->delete();
+        return redirect()->route('funcionarios.index')->with('funcionarioDeletado', 'Funcionário deletado com sucesso!! Caso queria restaurar clique na aba desativados!');
+    }
+
+    public function desativadosF()
+    {
+        $funcionarios = DB::table('funcionarios')->get();
+        return view('funcionariosDesativados', ['funcionarios' => $funcionarios]);
+    }
+
+    public function restore($id)
+    {
+        Funcionario::withTrashed()->where('id', $id)->restore();
+        return redirect()->back()->with('funcionarioRestaurado', 'Funcionário restaurado com sucesso!!');
+        
     }
 }

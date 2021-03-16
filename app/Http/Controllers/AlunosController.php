@@ -165,7 +165,7 @@ class AlunosController extends Controller
             return view('ultimaAvaliacao',compact('ava','aluno'));
         }
         else{
-            return redirect()->back()->with('semAvaliacao', 'Este Aluno não possui nenhuma avaliação física');;
+            return redirect()->back()->with('semAvaliacao', 'Este Aluno não possui nenhuma avaliação física');
         }
         
     }

@@ -21,7 +21,6 @@
 <span>Telefone: {{$aluno->telefone}}</span><br><br> 
 <span>Email: {{$aluno->email}}</span><br><br> 
 <span>Endereço: {{$aluno->endereco}}</span><br><br> 
-<span>Status: Ativo</span><br><br> 
 <span>Observação: {{$aluno->obs}}</span><br><br> 
 <span>Treino: {{$aluno->treino->titulo}}</span><br><br> 
 <span>Plano: {{$aluno->plano->nome}}</span><br><br> 

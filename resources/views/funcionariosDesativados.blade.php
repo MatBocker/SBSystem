@@ -22,27 +22,16 @@ background-color: #303030;
 }
 </style>
 </head>
-<h1 class="text-center"> Funcionarios </h1> <hr>
+<h1 class="text-center"> Funcionarios Desativados </h1> <hr>
       <div class="text-center">
-        <a href="{{route('funcionarios.create')}}">
-          <button class="btn btn-success">Cadastrar</button>
-        </a>
-        <a href="{{route('funcionarios.desativadosF')}}">
-          <button class="btn btn-secondary">Desativados</button>
+      <a href="{{route('funcionarios.index')}}">
+          <button class="btn btn-secondary">Voltar</button>
         </a>
       </div>  
  <div class="container">  
- @if(session('funcionarioEditado'))
+@if(session('funcionarioRestaurado'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>{{session('funcionarioEditado')}}</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-@endif
-@if(session('funcionarioDeletado'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>{{session('funcionarioDeletado')}}</strong>
+  <strong>{{session('funcionarioRestaurado')}}</strong>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -65,7 +54,7 @@ background-color: #303030;
   
   @foreach($funcionarios as $funcionario)
     <tr>
-    @if($funcionario->deleted_at==null)
+    @if($funcionario->deleted_at!=null)
       <th scope="row">{{$funcionario->id}}</th>
       <td>{{$funcionario->nome}}</td>
       <td>{{$funcionario->cpf}}</td>
@@ -74,16 +63,10 @@ background-color: #303030;
       <td>{{$funcionario->salario}}</td>
       <td>{{$funcionario->modalidade}}</td>
       <td>
-        <a href="{{route('funcionarios.show',$funcionario->id)}}">
-          <button class="btn btn-secondary">Exibir</button>
-        </a>
-        <a href="{{route('funcionarios.edit',$funcionario->id)}}">
-          <button class="btn btn-primary">Editar</button>
-        </a>
-        <form class="deletas" action="{{route('funcionarios.destroy',$funcionario->id)}}" method="POST">  
-        @method('delete')
+      <form action="{{route('funcionarios.restore',$funcionario->id)}}" method="post">  
+        @method('patch')
         @CSRF
-        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja desativar o funcionario? ')">Desativar</button>
+        <button type="submit" class="btn btn-success" onclick="return confirm('Você tem certeza que deseja reativar o funcionario? ')">Restaurar</button>
         </form>
       </td>
       @endif
