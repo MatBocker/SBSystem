@@ -148,8 +148,25 @@ class TreinosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(treino $treino)
     {
+        $treino=treino::find($treino->id);
+        if ($treino -> aluno () -> count ()) 
+        {
+            return redirect()->route('treinos.index')->with('impossivelTreino', 'Impossivel excluir... Treino ja está cadastrado em um aluno!');
+        }
+        else{
+            $exercicio = Exercicio::all();
+            foreach($exercicio as $exe)
+            {
+                if($exe->treino_id==$treino->id)
+                {
+                    $exe->delete();
+                }
+            }
+            $treino->delete();
+            return redirect()->route('treinos.index')->with('treinoDeletado', 'Treino excluido com sucesso!!');
+        }
         
     }
 }

@@ -20,7 +20,7 @@ class CreateExerciciosTable extends Migration
             $table->integer('repeticoes');
             $table->integer('series');
             $table->unsignedBigInteger('treino_id');
-            $table->foreign('treino_id')->references('id')->on('treinos')->onUpdate('cascade');
+            $table->foreign('treino_id')->references('id')->on('treinos')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

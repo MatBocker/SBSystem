@@ -2,6 +2,18 @@
 @section('tudo')
 <head>
 <title>Visualizar Aluno</title>
+<style>
+
+table {
+  margin-top: 30px;
+}
+
+thead{
+color: white;
+background-color: #303030;
+}
+
+</style>
 </head>
 <link rel="stylesheet" href="../site/style.css">
 <h1 class="text-center"> Dados de {{$aluno->nome}} </h1> <hr>
@@ -25,6 +37,30 @@
 <span>Treino: {{$aluno->treino->titulo}}</span><br><br> 
 <span>Plano: {{$aluno->plano->nome}}</span><br><br> 
 </div>
+<hr>
+<h2 class="text-center">Dados do Treino</h2>
+<table class="table text-center table-bordered ">
+  <thead class="text-center">
+    <tr>
+      <th scope="col" class="text-center">Nome</th>
+      <th scope="col" class="text-center">Peso</th>
+      <th scope="col" class="text-center">Repetições</th>
+      <th scope="col" class="text-center">Series</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  @foreach($exercicios as $exercicio)
+    <tr>
+      <td>{{$exercicio->nome}}</td>
+      <td>{{$exercicio->peso}}kg</td>
+      <td>{{$exercicio->repeticoes}}</td>
+      <td>{{$exercicio->series}}</td>
+    </tr>
+    
+    @endforeach
+  </tbody>
+</table>
 </div>
 
 

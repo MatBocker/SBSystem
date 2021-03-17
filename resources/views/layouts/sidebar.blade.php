@@ -23,7 +23,7 @@
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                       LOGO
+                       SBsystem
                     </a>
                 </li>
                 <li>

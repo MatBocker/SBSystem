@@ -4,6 +4,10 @@
 <title>Treinos</title>
 <style>
 
+.deletas{
+  display:inline;
+}
+
 table {
   margin-top: 30px;
 }
@@ -11,6 +15,11 @@ table {
 thead{
 color: white;
 background-color: #303030;
+}
+
+
+.alert {
+  margin-top: 30px;
 }
 
 </style>
@@ -22,6 +31,22 @@ background-color: #303030;
         </a>
       </div>  
  <div class="container">     
+ @if(session('treinoDeletado'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>{{session('treinoDeletado')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif 
+@if(session('impossivelTreino'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>{{session('impossivelTreino')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif 
 <table class="table text-center table-bordered ">
   <thead class="text-center">
     <tr>
@@ -48,6 +73,11 @@ background-color: #303030;
         <a href="{{route('treinos.edit',$treino->id)}}">
           <button class="btn btn-primary">Editar</button>
         </a>
+        <form class="deletas" action="{{route('treinos.destroy',$treino->id)}}" method="POST">  
+        @method('delete')
+        @CSRF
+        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir o treino? ')">Desativar</button>
+        </form>
       </td>
       @endif
     </tr>
@@ -56,4 +86,9 @@ background-color: #303030;
   </tbody>
 </table>
 </div>
+<script>
+$(".alert-dismissible").fadeTo(5000, 500).slideUp(500, function(){
+    $(".alert-dismissible").remove();
+});
+</script>
 @endsection

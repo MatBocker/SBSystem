@@ -98,7 +98,7 @@ class PlanosController extends Controller
         $plano=plano::find($plano->id);
         if ($plano -> aluno () -> count ()) 
         { 
-            return redirect()->route('planos.index')->with('impossivelDeletarPlano', 'Impossivel desativar... Plano ja está no cadastro de um aluno!');
+            return redirect()->route('planos.index')->with('impossivelDeletarPlano', 'Impossivel desativar... Plano ja está cadastrado em um aluno');
         }
         else{
             $plano->delete();

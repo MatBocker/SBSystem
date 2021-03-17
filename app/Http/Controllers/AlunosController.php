@@ -71,7 +71,8 @@ class AlunosController extends Controller
      */
     public function show(Aluno $aluno)
     {
-        return view('mostrarAluno',compact('aluno'));
+        $exercicios = treino::find($aluno->treino_id)->exercicio;
+        return view('mostrarAluno',compact('aluno','exercicios'));
     }
 
     /**
@@ -217,5 +218,11 @@ class AlunosController extends Controller
 
         $aluno = $aluno->avaliacao()->save($ava);
         return redirect()->route('alunos.index')->with('avaliacaoCriada', 'Avaliação Física criada com sucesso!!');
+    }
+
+    public function mostrarTreinoAluno(Aluno $aluno)
+    {
+        $exercicios = treino::find($aluno->treino_id)->exercicio;
+        return view('mostrarTreinoAluno',compact('exercicios','aluno'));
     }
 }

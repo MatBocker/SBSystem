@@ -16,9 +16,6 @@ color: white;
 background-color: #303030;
 }
 
-.h4, .h5 {
-  display:inline;
-  }
 
 .alert {
   margin-top: 30px;
@@ -152,7 +149,7 @@ background-color: #303030;
 
 </div>
 <script>
-$(".alert-dismissible").fadeTo(3000, 500).slideUp(500, function(){
+$(".alert-dismissible").fadeTo(5000, 500).slideUp(500, function(){
     $(".alert-dismissible").remove();
 });
 </script>
