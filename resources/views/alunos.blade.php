@@ -18,7 +18,15 @@ background-color: #303030;
 
 
 .alert {
-  margin-top: 30px;
+  margin-top: 10px;
+
+}
+
+#search
+{
+  display: inline;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
   
 </style>
@@ -32,7 +40,19 @@ background-color: #303030;
           <button class="btn btn-secondary">Desativados</button>
         </a>
       </div>
- <div class="container">    
+      <div class="container"> 
+      <form class="deletas" action="{{route('alunos.procurar')}}" method="get">
+      <div class="form-group">
+      <div class="input-group">
+  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Aluno" />
+  <span class="input-group-btn">
+  <button  type="submit" class="btn btn-primary">Buscar</button>
+  </span>
+  </div>
+  </form>
+  </div>
+ <div class="container">   
+ 
  @if(session('semAvaliacao'))
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
   <strong>{{session('semAvaliacao')}}</strong>
@@ -87,25 +107,25 @@ background-color: #303030;
   </thead>
   <tbody>
   
-  @foreach($alunos as $alunos)
+  @foreach($alunos as $aluno)
     <tr>
-    @if($alunos->deleted_at==null)
-      <th scope="row">{{$alunos->id}}</th>
-      <td>{{$alunos->nome}}</td>
-      <td>{{$alunos->cpf}}</td>
-      <td>{{$alunos->sexo}}</td>
-      <td>{{$alunos->telefone}}</td>
-      <td>{{$alunos->email}}</td>
+    @if($aluno->deleted_at==null)
+      <th scope="row">{{$aluno->id}}</th>
+      <td>{{$aluno->nome}}</td>
+      <td>{{$aluno->cpf}}</td>
+      <td>{{$aluno->sexo}}</td>
+      <td>{{$aluno->telefone}}</td>
+      <td>{{$aluno->email}}</td>
       <td>
-        <a href="{{route('alunos.show',$alunos->id)}}">
+        <a href="{{route('alunos.show',$aluno->id)}}">
           <button class="btn btn-secondary">Exibir</button>
         </a>
        
-        <a href="{{route('alunos.edit',$alunos->id)}}">
+        <a href="{{route('alunos.edit',$aluno->id)}}">
           <button class="btn btn-primary">Editar</button>
         </a>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal{{$alunos->id}}">Avaliação</button>
-        <div class="modal fade" id="exampleModal{{$alunos->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal{{$aluno->id}}">Avaliação</button>
+        <div class="modal fade" id="exampleModal{{$aluno->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -121,20 +141,20 @@ background-color: #303030;
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-light" data-dismiss="modal">Voltar</button>
-        <a href="{{route('alunos.ultimaAva',$alunos->id)}}">
+        <a href="{{route('alunos.ultimaAva',$aluno->id)}}">
           <button class="btn btn-primary">Ultima avaliação</button>
         </a>
-        <a href="{{route('alunos.criarAva',$alunos->id)}}">
+        <a href="{{route('alunos.criarAva',$aluno->id)}}">
           <button class="btn btn-success">Fazer avaliação física</button>
         </a>
-        <a href="{{route('alunos.ava',$alunos->id)}}">
+        <a href="{{route('alunos.ava',$aluno->id)}}">
           <button class="btn btn-warning">Histórico de avaliações</button>
         </a>
       </div>
     </div>
   </div>
 </div>
-      <form class="deletas" action="{{route('alunos.destroy',$alunos->id)}}" method="POST">  
+      <form class="deletas" action="{{route('alunos.destroy',$aluno->id)}}" method="POST">  
         @method('delete')
         @CSRF
         <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja desativar o aluno? ')">Desativar</button>
@@ -146,11 +166,14 @@ background-color: #303030;
     @endforeach
   </tbody>
 </table>
-
+<span>
+{{ $alunos->links('pagination::bootstrap-4') }}
+</span>
 </div>
 <script>
 $(".alert-dismissible").fadeTo(5000, 500).slideUp(500, function(){
     $(".alert-dismissible").remove();
 });
+
 </script>
 @endsection

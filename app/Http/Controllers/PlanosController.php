@@ -16,7 +16,7 @@ class PlanosController extends Controller
      */
     public function index()
     {
-        $planos = DB::table('planos')->get();
+        $planos = DB::table('planos')->Paginate(9);
         return view('planos', ['planos' => $planos]);
     }
 
@@ -118,5 +118,11 @@ class PlanosController extends Controller
         Plano::withTrashed()->where('id', $id)->restore();
         return redirect()->back()->with('planoRestaurado', 'Plano restaurado com sucesso!!');
         
+    }
+    function procurarP(Request $request)
+    {
+        $procura=$request->search;
+        $planos=DB::table('planos')->where('nome','LIKE','%'.$procura.'%')->paginate();
+        return view('planos', ['planos' => $planos]);
     }
 }

@@ -20,6 +20,12 @@ background-color: #303030;
 .deletas{
   display:inline;
 }
+#search
+{
+  display: inline;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 </style>
 </head>
 <h1 class="text-center"> Funcionarios </h1> <hr>
@@ -31,6 +37,17 @@ background-color: #303030;
           <button class="btn btn-secondary">Desativados</button>
         </a>
       </div>  
+      <div class="container"> 
+      <form class="deletas" action="{{route('funcionarios.procurarF')}}" method="get">
+      <div class="form-group">
+      <div class="input-group">
+  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Funcionario" />
+  <span class="input-group-btn">
+  <button  type="submit" class="btn btn-primary">Buscar</button>
+  </span>
+  </div>
+  </form>
+  </div>
  <div class="container">  
  @if(session('funcionarioEditado'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -100,6 +117,9 @@ background-color: #303030;
     @endforeach
   </tbody>
 </table>
+<span>
+{{ $funcionarios->links('pagination::bootstrap-4') }}
+</span>
 </div>
 <script>
 $(".alert-dismissible").fadeTo(5000, 500).slideUp(500, function(){

@@ -169,4 +169,10 @@ class TreinosController extends Controller
         }
         
     }
+    function procurarT(Request $request)
+    {
+        $procura=$request->search;
+        $treinos=DB::table('treinos')->where('titulo','LIKE','%'.$procura.'%')->paginate();
+        return view('treinos', ['treinos' => $treinos]);
+    }
 }

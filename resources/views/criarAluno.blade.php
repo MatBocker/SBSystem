@@ -2,11 +2,23 @@
 @section('tudo')
 <head>
 <title>Cadastro do Aluno</title>
+<style>
+.botoes
+{
+  margin-bottom: 20px;
+}
+</style>
 </head>
 <link rel="stylesheet" href="../site/style.css">
 <h1 class="text-center"> Cadastrar Aluno </h1> <hr>
 <div class="container"> 
-<form action="{{route('alunos.store')}}" method="POST">
+<div class="text-center botoes">
+        <a href="{{route('alunos.index')}}">
+          <button class="btn btn-secondary">Voltar</button>
+        </a>
+        <button type="submit" class="btn btn-success" form="criarAluno">Cadastrar</button>
+</div>
+<form action="{{route('alunos.store')}}" method="POST" id="criarAluno">
 @CSRF
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -38,7 +50,6 @@
     <div class="form-group col-md-2">
       <label for="sexo">Sexo</label>
       <select name="sexo" id="sexo" class="form-control" required>
-        <option selected>Escolha...</option>
         <option value="Masculino">Masculino</option>
         <option value="Feminino">Feminino</option>
         </select>
@@ -46,7 +57,6 @@
     <div class="form-group col-md-3">
       <label for="estado">UF</label>
       <select name="estado" id="estado" class="form-control" required>
-        <option selected>Escolha...</option>
         <option value="AC">Acre</option>
 	    <option value="AL">Alagoas</option>
 	    <option value="AP">Amapá</option>
@@ -95,7 +105,6 @@
     <div class="form-group col-md-2">
       <label for="treino">Treinos</label>
       <select name="treino" id="treino" class="form-control">
-        <option selected>Escolha...</option>
         @foreach($treinos AS $treino)
       <option value="{{ $treino->id }}">{{ $treino->titulo }}</option>
         @endforeach
@@ -103,8 +112,7 @@
     </div>
     <div class="form-group col-md-2">
       <label for="plano">Planos</label>
-      <select name="plano" id="plano" class="form-control" required>
-        <option selected>Escolha...</option>
+      <select name="plano" id="plano" class="form-control" required> 
         @foreach($planos AS $plano)
       <option value="{{ $plano->id }}">{{ $plano->nome }}</option>
         @endforeach
@@ -114,7 +122,6 @@
     <label for="obs">Observação</label>
     <textarea name="obs" class="form-control" id="obs" rows="2"></textarea>
   </div>
-  <button type="submit" class="btn btn-success">Cadastrar</button>
 </form>
 
 

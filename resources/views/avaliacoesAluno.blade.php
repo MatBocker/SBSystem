@@ -53,6 +53,9 @@ background-color: #303030;
     @endforeach
   </tbody>
 </table>
+<span>
+{{ $avaliacoes->links('pagination::bootstrap-4') }}
+</span>
 </div>
 @endsection
 

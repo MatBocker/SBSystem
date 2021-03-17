@@ -32,6 +32,8 @@ Route::get('alunos/{aluno}/ultimaAva', 'AlunosController@ultimaAva')->name('alun
 Route::get('alunos/{aluno}/mostraAva', 'AlunosController@mostraAva')->name('alunos.mostraAva');
 Route::get('alunos/{aluno}/criarAva', 'AlunosController@criarAva')->name('alunos.criarAva');
 Route::put('alunos/avaliacaoCriar/{id}', 'AlunosController@avaliacaoCriar')->name('alunos.avaliacaoCriar');
+Route::get('procurar', 'AlunosController@procurar')->name('alunos.procurar');
+Route::get('procurarT', 'TreinosController@procurarT')->name('treinos.procurarT');
 });
 
 Route::middleware(['auth','dono'])->group(function() {
@@ -41,4 +43,6 @@ Route::get('desativados', 'PlanosController@desativados')->name('planos.desativa
 Route::patch('planos/restore/{id}', 'PlanosController@restore')->name('planos.restore');
 Route::patch('funcionarios/restore/{id}', 'FuncionariosController@restore')->name('funcionarios.restore');
 Route::get('desativadosF', 'FuncionariosController@desativadosF')->name('funcionarios.desativadosF');
+Route::get('procurarF', 'FuncionariosController@procurarF')->name('funcionarios.procurarF');
+Route::get('procurarP', 'PlanosController@procurarP')->name('planos.procurarP');
 });

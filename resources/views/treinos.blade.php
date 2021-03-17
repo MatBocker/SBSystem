@@ -22,6 +22,12 @@ background-color: #303030;
   margin-top: 30px;
 }
 
+#search
+{
+  display: inline;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 </style>
 </head>
 <h1 class="text-center"> Treinos </h1> <hr>
@@ -30,6 +36,17 @@ background-color: #303030;
           <button class="btn btn-success">Cadastrar</button>
         </a>
       </div>  
+      <div class="container"> 
+      <form class="deletas" action="{{route('treinos.procurarT')}}" method="get">
+      <div class="form-group">
+      <div class="input-group">
+  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Treinos" />
+  <span class="input-group-btn">
+  <button  type="submit" class="btn btn-primary">Buscar</button>
+  </span>
+  </div>
+  </form>
+  </div>     
  <div class="container">     
  @if(session('treinoDeletado'))
 <div class="alert alert-danger alert-dismissible fade show" role="alert">

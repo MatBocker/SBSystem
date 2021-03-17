@@ -19,7 +19,7 @@ class FuncionariosController extends Controller
      */
     public function index()
     {
-        $funcionarios = DB::table('funcionarios')->get();
+        $funcionarios = DB::table('funcionarios')->Paginate(9);
         return view('funcionarios', ['funcionarios' => $funcionarios]);
     }
 
@@ -143,5 +143,11 @@ class FuncionariosController extends Controller
         Funcionario::withTrashed()->where('id', $id)->restore();
         return redirect()->back()->with('funcionarioRestaurado', 'Funcionário restaurado com sucesso!!');
         
+    }
+    function procurarF(Request $request)
+    {
+        $procura=$request->search;
+        $func=DB::table('funcionarios')->where('nome','LIKE','%'.$procura.'%')->paginate();
+        return view('funcionarios', ['funcionarios' => $func]);
     }
 }

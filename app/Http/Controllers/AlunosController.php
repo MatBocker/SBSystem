@@ -20,7 +20,7 @@ class AlunosController extends Controller
      */
     public function index()
     {
-        $alunos = DB::table('alunos')->get();
+        $alunos = DB::table('alunos')->Paginate(9);
         return view('alunos', ['alunos' => $alunos]);
     }
 
@@ -154,7 +154,7 @@ class AlunosController extends Controller
 
     public function ava(Aluno $aluno)
     {
-        $avaliacoes = Aluno::find($aluno->id)->avaliacao;
+        $avaliacoes = Aluno::find($aluno->id)->avaliacao()->Paginate(9);
         return view('avaliacoesAluno',compact('avaliacoes','aluno'));
     }
     public function ultimaAva(Aluno $aluno)
@@ -224,5 +224,13 @@ class AlunosController extends Controller
     {
         $exercicios = treino::find($aluno->treino_id)->exercicio;
         return view('mostrarTreinoAluno',compact('exercicios','aluno'));
+    }
+
+
+    function procurar(Request $request)
+    {
+        $procura=$request->search;
+        $alunos=DB::table('alunos')->where('nome','LIKE','%'.$procura.'%')->paginate();
+        return view('alunos', ['alunos' => $alunos]);
     }
 }
