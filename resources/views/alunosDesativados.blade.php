@@ -36,6 +36,11 @@ background-color: #303030;
 {
   margin-left: 5px;
 }
+
+body
+{
+ background-color: #F5F5F5;
+}
 </style>
 </head>
 <h1 class="text-center"> Alunos Desativados </h1> <hr>
@@ -51,9 +56,9 @@ background-color: #303030;
       <div class="input-group">
   <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Aluno" />
   <span class="input-group-btn">
-  <button  type="submit" class="btn btn-primary">Buscar</button>
+  <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
   <a href="{{route('alunos.desativadosA')}}">
-          <button class="btn btn-warning lado" form="aa">Recarregar</button>
+          <button class="btn btn-warning lado" form="aa"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
         </a>
   </span>
   </div>
@@ -103,12 +108,12 @@ background-color: #303030;
       <form class="deletas"  action="{{route('alunos.restore',$aluno->id)}}" method="post">  
         @method('patch')
         @CSRF
-        <button type="submit" class="btn btn-success" onclick="return confirm('Você tem certeza que deseja reativar o aluno? ')">Restaurar</button>
+        <button type="submit" class="btn btn-success" title="Restaurar aluno" onclick="return confirm('Você tem certeza que deseja reativar o aluno? ')"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
         </form>
         <form class="deletas" action="{{route('alunos.excluirPermanente',$aluno->id)}}" method="get">  
         @method('delete')
         @CSRF
-        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir permanentemente? ')">Excluir</button>
+        <button  type="submit" class="btn btn-danger" title="Excluir aluno do sistema" onclick="return confirm('Você tem certeza que deseja excluir permanentemente? ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </form>
 
       </td>

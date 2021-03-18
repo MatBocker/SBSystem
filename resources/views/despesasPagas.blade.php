@@ -46,7 +46,7 @@ background-color: #303030;
       <form class="deletas" action="{{route('despesas.procurarDD')}}" method="get">
       <div class="form-group">
       <div class="input-group">
-  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Despesas" />
+  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Despesa" />
   <span class="input-group-btn">
   <button  type="submit" class="btn btn-primary">Buscar</button>
   <a href="{{route('despesas.pagas')}}">

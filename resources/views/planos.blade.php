@@ -45,7 +45,7 @@ background-color: #303030;
       <form class="deletas" action="{{route('planos.procurarP')}}" method="get">
       <div class="form-group">
       <div class="input-group">
-  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Planos" />
+  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Plano" />
   <span class="input-group-btn">
   <button  type="submit" class="btn btn-primary">Buscar</button>
   <a href="{{route('planos.index')}}">

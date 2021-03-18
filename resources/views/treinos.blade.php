@@ -28,6 +28,10 @@ background-color: #303030;
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.lado
+{
+  margin-left: 5%;
+}
 </style>
 </head>
 <h1 class="text-center"> Treinos </h1> <hr>
@@ -40,9 +44,12 @@ background-color: #303030;
       <form class="deletas" action="{{route('treinos.procurarT')}}" method="get">
       <div class="form-group">
       <div class="input-group">
-  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Treinos" />
+  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Treino" />
   <span class="input-group-btn">
   <button  type="submit" class="btn btn-primary">Buscar</button>
+  <a href="{{route('treinos.index')}}">
+          <button class="btn btn-warning lado" form="aa">Recarregar</button>
+        </a>
   </span>
   </div>
   </form>

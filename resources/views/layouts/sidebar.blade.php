@@ -27,25 +27,22 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('home')}}">Visão Geral</a>
+                    <a href="{{route('home')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"> Home</a>
                 </li>
                 <li>
-                    <a href="{{route('alunos.index')}}">Alunos</a>
+                    <a href="{{route('alunos.index')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Alunos</a>
                 </li>
                 <li>
-                    <a href="{{route('treinos.index')}}">Treinos</a>
+                    <a href="{{route('treinos.index')}}"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Treinos</a>
                 </li>
                 <li>
-                    <a href="{{route('planos.index')}}">Planos</a>
+                    <a href="{{route('planos.index')}}"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Planos</a>
                 </li>
                 <li>
-                    <a href="{{route('funcionarios.index')}}">Funcionários</a>
+                    <a href="{{route('funcionarios.index')}}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Funcionários</a>
                 </li>
                 <li>
-                    <a href="{{route('despesas.index')}}">Despesas</a>
-                </li>
-                <li>
-                    <a href="#">Sobre</a>
+                    <a href="{{route('despesas.index')}}"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Despesas</a>
                 </li>
                 
                 <div>

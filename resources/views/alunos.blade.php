@@ -52,9 +52,9 @@ background-color: #303030;
       <div class="input-group">
   <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Aluno" />
   <span class="input-group-btn">
-  <button  type="submit" class="btn btn-primary">Buscar</button>
+  <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></button>
   <a href="{{route('alunos.index')}}">
-          <button class="btn btn-warning lado" form="aa">Recarregar</button>
+          <button class="btn btn-warning lado" form="aa"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
         </a>
   </span>
   </div>
@@ -127,13 +127,14 @@ background-color: #303030;
       <td>{{$aluno->email}}</td>
       <td>
         <a href="{{route('alunos.show',$aluno->id)}}">
-          <button class="btn btn-secondary">Exibir</button>
+          <button class="btn btn-secondary" title="Exibir dados do aluno">
+          <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
         </a>
        
         <a href="{{route('alunos.edit',$aluno->id)}}">
-          <button class="btn btn-primary">Editar</button>
+          <button class="btn btn-primary" title="Editar dados do aluno"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
         </a>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal{{$aluno->id}}">Avaliação</button>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal{{$aluno->id}}" title="Avaliação Física"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></button>
         <div class="modal fade" id="exampleModal{{$aluno->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -166,7 +167,7 @@ background-color: #303030;
       <form class="deletas" action="{{route('alunos.destroy',$aluno->id)}}" method="POST">  
         @method('delete')
         @CSRF
-        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja desativar o aluno? ')">Desativar</button>
+        <button  type="submit" class="btn btn-danger" title="Desativar aluno" onclick="return confirm('Você tem certeza que deseja desativar o aluno? ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </form>
         </td>
       @endif
