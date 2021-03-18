@@ -2,11 +2,23 @@
 @section('tudo')
 <head>
 <title>Editar Aluno</title>
+<style>
+.botoes
+{
+  margin-bottom: 20px;
+}
+</style>
 </head>
 <link rel="stylesheet" href="../../site/style.css">
 <h1 class="text-center"> Editar {{ $aluno->nome }} </h1> <hr>
 <div class="container"> 
-<form action="{{route('alunos.update',$aluno->id)}}" method="POST">
+<div class="text-center botoes">
+        <a href="{{route('alunos.index')}}">
+          <button class="btn btn-secondary">Voltar</button>
+        </a>
+        <button type="submit" class="btn btn-primary" form="editarAluno">Editar</button>
+</div>
+<form action="{{route('alunos.update',$aluno->id)}}" method="POST" id="editarAluno">
 @method('PUT')
 @CSRF
   <div class="form-row">
@@ -116,7 +128,6 @@
     <label for="obs">Observação</label>
     <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none">{{ $aluno->obs }}</textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Editar</button>
 </form>
 
 

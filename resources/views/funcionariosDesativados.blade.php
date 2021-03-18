@@ -100,12 +100,12 @@ background-color: #303030;
       <form class="deletas" action="{{route('funcionarios.restore',$funcionario->id)}}" method="post">  
         @method('patch')
         @CSRF
-        <button type="submit" class="btn btn-success" onclick="return confirm('Você tem certeza que deseja reativar o funcionario? ')">Restaurar</button>
+        <button type="submit" class="btn btn-success" title="Restaurar funcionário" onclick="return confirm('Você tem certeza que deseja restaurar o funcionario? ')"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
         </form>
         <form class="deletas" action="{{route('funcionarios.excluirPermanente',$funcionario->id)}}" method="get">  
         @method('delete')
         @CSRF
-        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir permanentemente? ')">Excluir</button>
+        <button  type="submit" class="btn btn-danger" title="Excluir funcionário do sistema" onclick="return confirm('Você tem certeza que deseja excluir permanentemente? ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </form>
       </td>
       @endif

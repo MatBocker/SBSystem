@@ -48,9 +48,9 @@ background-color: #303030;
       <div class="input-group">
   <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Despesa" />
   <span class="input-group-btn">
-  <button  type="submit" class="btn btn-primary">Buscar</button>
+  <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
   <a href="{{route('despesas.pagas')}}">
-          <button class="btn btn-warning redondo" form="aa">Recarregar</button>
+          <button class="btn btn-warning redondo" form="aa"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
         </a>
   </span>
   </div>
@@ -87,7 +87,7 @@ background-color: #303030;
       <td>{{$despesa->updated_at}}</td>
       <td>{{$despesa->validade}}</td>
       <td>
-      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalLong{{$despesa->id}}">Exibir</button>
+      <button type="button" title="Exibir dados da despesa paga" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalLong{{$despesa->id}}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
 <div class="modal fade" id="exampleModalLong{{$despesa->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -114,7 +114,7 @@ background-color: #303030;
 <form class="deletas" action="{{route('despesas.excluirPaga',$despesa->id)}}" method="get">  
         @method('delete')
         @CSRF
-        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir permanentemente? ')">Excluir</button>
+        <button  type="submit" class="btn btn-danger" title="Excluir despesa do sistema" onclick="return confirm('Você tem certeza que deseja excluir permanentemente? ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </form>
 </td>
 @endif

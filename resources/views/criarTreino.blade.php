@@ -2,13 +2,25 @@
 @section('tudo')
 <head>
 <title>Cadastro do Treino</title>
+<style>
+.botoes
+{
+  margin-bottom: 20px;
+}
+</style>
 </head>
 <link rel="stylesheet" href="../site/style.css">
 <h1 class="text-center"> Cadastrar Treino </h1> <hr>
 
 
 <div class="container"> 
-<form action="{{route('treinos.store')}}" method="POST">
+<div class="text-center botoes">
+        <a href="{{route('treinos.index')}}">
+          <button class="btn btn-secondary">Voltar</button>
+        </a>
+        <button type="submit" class="btn btn-success" form="criarTreino">Cadastrar</button>
+</div>
+<form action="{{route('treinos.store')}}" method="POST" id="criarTreino">
 @CSRF
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -17,10 +29,9 @@
     </div>
     <div class="form-group col-md-6">
     <label for="obs">Observação</label>
-    <textarea name="obs" class="form-control" id="obs" rows="2"></textarea>
+    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none"></textarea>
     </div>
     <div class="text-center">
-<button type="submit" class="btn btn-success">Cadastrar</button>
     </div>
 
 </div>

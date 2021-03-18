@@ -96,12 +96,12 @@ background-color: #303030;
       <form class="deletas" action="{{route('planos.restore',$plano->id)}}" method="post">  
         @method('patch')
         @CSRF
-        <button type="submit" class="btn btn-success" onclick="return confirm('Você tem certeza que deseja reativar o plano? ')">Restaurar</button>
+        <button type="submit" class="btn btn-success" title="Restaurar plano" onclick="return confirm('Você tem certeza que deseja restaurar o plano? ')"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
         </form>
         <form class="deletas" action="{{route('planos.excluirPermanente',$plano->id)}}" method="get">  
         @method('delete')
         @CSRF
-        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir permanentemente? ')">Excluir</button>
+        <button  type="submit" class="btn btn-danger" title="Excluir plano do sistema" onclick="return confirm('Você tem certeza que deseja excluir permanentemente? ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </form>
       </td>
       @endif

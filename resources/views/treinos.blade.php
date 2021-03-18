@@ -46,9 +46,9 @@ background-color: #303030;
       <div class="input-group">
   <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Treino" />
   <span class="input-group-btn">
-  <button  type="submit" class="btn btn-primary">Buscar</button>
+  <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
   <a href="{{route('treinos.index')}}">
-          <button class="btn btn-warning lado" form="aa">Recarregar</button>
+          <button class="btn btn-warning lado" form="aa"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
         </a>
   </span>
   </div>
@@ -92,15 +92,15 @@ background-color: #303030;
       <td>{{$treino->created_at}}</td>
       <td>
         <a href="{{route('treinos.show',$treino->id)}}">
-          <button class="btn btn-secondary">Exibir</button>
+          <button class="btn btn-secondary" title="Exibir dados do treino"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
         </a>
         <a href="{{route('treinos.edit',$treino->id)}}">
-          <button class="btn btn-primary">Editar</button>
+          <button class="btn btn-primary" title="Editar dados do treino"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
         </a>
         <form class="deletas" action="{{route('treinos.destroy',$treino->id)}}" method="POST">  
         @method('delete')
         @CSRF
-        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir o treino? ')">Excluir</button>
+        <button  type="submit" class="btn btn-danger" title="Excluir treino do sistema" onclick="return confirm('Você tem certeza que deseja excluir o treino? ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
         </form>
       </td>
       @endif

@@ -108,7 +108,7 @@ body
       <form class="deletas"  action="{{route('alunos.restore',$aluno->id)}}" method="post">  
         @method('patch')
         @CSRF
-        <button type="submit" class="btn btn-success" title="Restaurar aluno" onclick="return confirm('Você tem certeza que deseja reativar o aluno? ')"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
+        <button type="submit" class="btn btn-success" title="Restaurar aluno" onclick="return confirm('Você tem certeza que deseja restaurar o aluno? ')"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
         </form>
         <form class="deletas" action="{{route('alunos.excluirPermanente',$aluno->id)}}" method="get">  
         @method('delete')

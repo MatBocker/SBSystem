@@ -2,13 +2,25 @@
 @section('tudo')
 <head>
 <title>Cadastro do Plano</title>
+<style>
+.botoes
+{
+  margin-bottom: 20px;
+}
+</style>
 </head>
 <link rel="stylesheet" href="../site/style.css">
 <h1 class="text-center"> Cadastrar Plano </h1> <hr>
 
 
 <div class="container"> 
-<form action="{{route('planos.store')}}" method="POST">
+<div class="text-center botoes">
+        <a href="{{route('planos.index')}}">
+          <button class="btn btn-secondary">Voltar</button>
+        </a>
+        <button type="submit" class="btn btn-success" form="criarPlano">Cadastrar</button>
+</div>
+<form action="{{route('planos.store')}}" method="POST" id="criarPlano">
 @CSRF
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -23,19 +35,15 @@
     <div class="form-group col-md-3">
       <label for="tipo">Tipo</label>
       <select name="tipo" id="tipo" class="form-control" required>
-        <option selected>Escolha...</option>
         <option value="Mensal">Mensal</option>
         <option value="Anual">Anual</option>
         </select>
     </div>
     <div class="form-group col-md-6">
     <label for="obs">Observação</label>
-    <textarea name="obs" class="form-control" id="obs" rows="2"></textarea>
+    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none"></textarea>
     </div>
     </div>
-    <div class="text-center">
-<button type="submit" class="btn btn-success">Cadastrar</button>
-</div>
 </form>
 </div>
 @endsection

@@ -2,13 +2,25 @@
 @section('tudo')
 <head>
 <title>Editar Plano</title>
+<style>
+.botoes
+{
+  margin-bottom: 20px;
+}
+</style>
 </head>
 <link rel="stylesheet" href="../../site/style.css">
 <h1 class="text-center"> Editar {{ $plano->nome }} </h1> <hr>
 
 
 <div class="container"> 
-<form action="{{route('planos.update',$plano->id)}}" method="POST">
+<div class="text-center botoes">
+        <a href="{{route('planos.index')}}">
+          <button class="btn btn-secondary">Voltar</button>
+        </a>
+        <button type="submit" class="btn btn-primary" form="editarPlano">Editar</button>
+</div>
+<form action="{{route('planos.update',$plano->id)}}" method="POST" id="editarPlano">
 @method('PUT')
 @CSRF
   <div class="form-row">
@@ -34,9 +46,6 @@
     <textarea name="obs" class="form-control" id="obs" rows="2">{{ $plano->observacao }}</textarea>
     </div>
     </div>
-    <div class="text-center">
-<button type="submit" class="btn btn-success">Editar</button>
-</div>
 </form>
 </div>
 @endsection

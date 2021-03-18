@@ -43,7 +43,7 @@ background-color: #303030;
           <button class="btn btn-success">Cadastrar</button>
         </a>
         <a href="{{route('alunos.desativadosA')}}">
-          <button class="btn btn-secondary">Desativados</button>
+          <button class="btn btn-secondary"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Desativados</button>
         </a>
       </div>
       <div class="container"> 
@@ -52,7 +52,7 @@ background-color: #303030;
       <div class="input-group">
   <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Aluno" />
   <span class="input-group-btn">
-  <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></button>
+  <button  type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
   <a href="{{route('alunos.index')}}">
           <button class="btn btn-warning lado" form="aa"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
         </a>
@@ -167,7 +167,7 @@ background-color: #303030;
       <form class="deletas" action="{{route('alunos.destroy',$aluno->id)}}" method="POST">  
         @method('delete')
         @CSRF
-        <button  type="submit" class="btn btn-danger" title="Desativar aluno" onclick="return confirm('Você tem certeza que deseja desativar o aluno? ')"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <button  type="submit" class="btn btn-danger" title="Desativar aluno" onclick="return confirm('Você tem certeza que deseja desativar o aluno? ')"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span></button>
         </form>
         </td>
       @endif
