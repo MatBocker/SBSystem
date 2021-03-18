@@ -24,6 +24,18 @@ background-color: #303030;
   margin-top: 30px;
 }
   
+
+#search
+{
+  display: inline;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.lado
+{
+  margin-left: 5px;
+}
 </style>
 </head>
 <h1 class="text-center"> Alunos Desativados </h1> <hr>
@@ -31,11 +43,34 @@ background-color: #303030;
         <a href="{{route('alunos.index')}}">
           <button class="btn btn-secondary">Voltar</button>
         </a>
+        
       </div>  
+      <div class="container"> 
+      <form class="deletas" action="{{route('alunos.procurarDesativados')}}" method="get">
+      <div class="form-group">
+      <div class="input-group">
+  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Aluno" />
+  <span class="input-group-btn">
+  <button  type="submit" class="btn btn-primary">Buscar</button>
+  <a href="{{route('alunos.desativadosA')}}">
+          <button class="btn btn-warning lado" form="aa">Recarregar</button>
+        </a>
+  </span>
+  </div>
+  </form>
+  </div>
  <div class="container">    
  @if(session('alunoRestaurado'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>{{session('alunoRestaurado')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif  
+@if(session('alunoExcluido'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{session('alunoExcluido')}}</strong>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -65,11 +100,17 @@ background-color: #303030;
       <td>{{$aluno->telefone}}</td>
       <td>{{$aluno->email}}</td>
       <td>
-      <form action="{{route('alunos.restore',$aluno->id)}}" method="post">  
+      <form class="deletas"  action="{{route('alunos.restore',$aluno->id)}}" method="post">  
         @method('patch')
         @CSRF
         <button type="submit" class="btn btn-success" onclick="return confirm('Você tem certeza que deseja reativar o aluno? ')">Restaurar</button>
         </form>
+        <form class="deletas" action="{{route('alunos.excluirPermanente',$aluno->id)}}" method="get">  
+        @method('delete')
+        @CSRF
+        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir permanentemente? ')">Excluir</button>
+        </form>
+
       </td>
       @endif
     </tr>
@@ -77,6 +118,9 @@ background-color: #303030;
     @endforeach
   </tbody>
 </table>
+<span>
+{{ $alunos->render('pagination::bootstrap-4') }}
+</span>
 </div>
 <script>
 $(".alert-dismissible").fadeTo(3000, 500).slideUp(500, function(){

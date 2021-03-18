@@ -26,6 +26,10 @@ background-color: #303030;
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.redondo
+{
+  margin-left: 5px;
+}
 </style>
 </head>
 <h1 class="text-center"> Planos </h1> <hr>
@@ -44,6 +48,9 @@ background-color: #303030;
   <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Planos" />
   <span class="input-group-btn">
   <button  type="submit" class="btn btn-primary">Buscar</button>
+  <a href="{{route('planos.index')}}">
+          <button class="btn btn-warning redondo" form="aa">Recarregar</button>
+        </a>
   </span>
   </div>
   </form>
@@ -122,7 +129,7 @@ background-color: #303030;
   </tbody>
 </table>
 <span>
-{{ $planos->links('pagination::bootstrap-4') }}
+{{ $planos->render('pagination::bootstrap-4') }}
 </span>
 </div>
 <script>

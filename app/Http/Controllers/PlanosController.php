@@ -16,7 +16,7 @@ class PlanosController extends Controller
      */
     public function index()
     {
-        $planos = DB::table('planos')->Paginate(9);
+        $planos = DB::table('planos')->whereNull('deleted_at')->Paginate(9);
         return view('planos', ['planos' => $planos]);
     }
 
@@ -109,7 +109,7 @@ class PlanosController extends Controller
 
     public function desativados()
     {
-        $planos = DB::table('planos')->get();
+        $planos = DB::table('planos')->whereNotNull('deleted_at')->paginate(9);
         return view('planosDesativados', ['planos' => $planos]);
     }
 
@@ -124,5 +124,16 @@ class PlanosController extends Controller
         $procura=$request->search;
         $planos=DB::table('planos')->where('nome','LIKE','%'.$procura.'%')->paginate();
         return view('planos', ['planos' => $planos]);
+    }
+    function procurarDP(Request $request)
+    {
+        $procura=$request->search;
+        $planos=DB::table('planos')->where('nome','LIKE','%'.$procura.'%')->paginate();
+        return view('planosDesativados', ['planos' => $planos]);
+    }
+    function excluirPermanente($id)
+    {
+        $plano=plano::withTrashed()->find($id)->forceDelete();
+        return redirect()->back()->with('planoExcluido', 'Plano excluido permanentemente com sucesso!!');
     }
 }

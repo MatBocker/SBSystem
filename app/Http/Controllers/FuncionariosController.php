@@ -19,7 +19,7 @@ class FuncionariosController extends Controller
      */
     public function index()
     {
-        $funcionarios = DB::table('funcionarios')->Paginate(9);
+        $funcionarios = DB::table('funcionarios')->whereNull('deleted_at')->Paginate(9);
         return view('funcionarios', ['funcionarios' => $funcionarios]);
     }
 
@@ -134,7 +134,7 @@ class FuncionariosController extends Controller
 
     public function desativadosF()
     {
-        $funcionarios = DB::table('funcionarios')->get();
+        $funcionarios = DB::table('funcionarios')->whereNotNull('deleted_at')->Paginate(9);
         return view('funcionariosDesativados', ['funcionarios' => $funcionarios]);
     }
 
@@ -149,5 +149,28 @@ class FuncionariosController extends Controller
         $procura=$request->search;
         $func=DB::table('funcionarios')->where('nome','LIKE','%'.$procura.'%')->paginate();
         return view('funcionarios', ['funcionarios' => $func]);
+    }
+
+    function procurarDF(Request $request)
+    {
+        $procura=$request->search;
+        $func=DB::table('funcionarios')->where('nome','LIKE','%'.$procura.'%')->paginate();
+        return view('funcionariosDesativados', ['funcionarios' => $func]);
+    }
+
+    function excluirPermanente($id)
+    {
+        $func=Funcionario::withTrashed()->find($id);
+        $usuario = User::all();
+        foreach($usuario as $usu)
+            {
+                if($usu->email==$func->email)
+                {
+                    $usu->delete();
+                }
+            }
+
+        $func->forceDelete();   
+        return redirect()->back()->with('funcExcluido', 'Funcionario excluido permanentemente com sucesso!!');
     }
 }

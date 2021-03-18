@@ -28,7 +28,10 @@ background-color: #303030;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-  
+.lado
+{
+  margin-left: 5px;
+}
 </style>
 </head>
 <h1 class="text-center"> Alunos </h1> <hr>
@@ -47,6 +50,9 @@ background-color: #303030;
   <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Aluno" />
   <span class="input-group-btn">
   <button  type="submit" class="btn btn-primary">Buscar</button>
+  <a href="{{route('alunos.index')}}">
+          <button class="btn btn-warning lado" form="aa">Recarregar</button>
+        </a>
   </span>
   </div>
   </form>
@@ -167,7 +173,7 @@ background-color: #303030;
   </tbody>
 </table>
 <span>
-{{ $alunos->links('pagination::bootstrap-4') }}
+{{ $alunos->render('pagination::bootstrap-4') }}
 </span>
 </div>
 <script>

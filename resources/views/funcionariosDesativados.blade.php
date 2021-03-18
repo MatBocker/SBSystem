@@ -20,6 +20,18 @@ background-color: #303030;
 .deletas{
   display:inline;
 }
+
+#search
+{
+  display: inline;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.lado
+{
+  margin-left: 5px;
+}
 </style>
 </head>
 <h1 class="text-center"> Funcionarios Desativados </h1> <hr>
@@ -29,6 +41,20 @@ background-color: #303030;
         </a>
       </div>  
  <div class="container">  
+ <div class="container"> 
+      <form class="deletas" action="{{route('funcionarios.procurarDF')}}" method="get">
+      <div class="form-group">
+      <div class="input-group">
+  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Funcionario" />
+  <span class="input-group-btn">
+  <button  type="submit" class="btn btn-primary">Buscar</button>
+  <a href="{{route('funcionarios.desativadosF')}}">
+          <button class="btn btn-warning lado" form="aa">Recarregar</button>
+        </a>
+  </span>
+  </div>
+  </form>
+  </div>
 @if(session('funcionarioRestaurado'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>{{session('funcionarioRestaurado')}}</strong>
@@ -36,7 +62,15 @@ background-color: #303030;
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-@endif        
+@endif   
+@if(session('funcExcluido'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{session('funcExcluido')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif      
 <table class="table text-center table-bordered ">
   <thead class="text-center">
     <tr>
@@ -63,10 +97,15 @@ background-color: #303030;
       <td>{{$funcionario->salario}}</td>
       <td>{{$funcionario->modalidade}}</td>
       <td>
-      <form action="{{route('funcionarios.restore',$funcionario->id)}}" method="post">  
+      <form class="deletas" action="{{route('funcionarios.restore',$funcionario->id)}}" method="post">  
         @method('patch')
         @CSRF
         <button type="submit" class="btn btn-success" onclick="return confirm('Você tem certeza que deseja reativar o funcionario? ')">Restaurar</button>
+        </form>
+        <form class="deletas" action="{{route('funcionarios.excluirPermanente',$funcionario->id)}}" method="get">  
+        @method('delete')
+        @CSRF
+        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir permanentemente? ')">Excluir</button>
         </form>
       </td>
       @endif
@@ -75,6 +114,9 @@ background-color: #303030;
     @endforeach
   </tbody>
 </table>
+<span>
+{{ $funcionarios->render('pagination::bootstrap-4') }}
+</span>
 </div>
 <script>
 $(".alert-dismissible").fadeTo(5000, 500).slideUp(500, function(){

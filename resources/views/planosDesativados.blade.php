@@ -20,6 +20,17 @@ background-color: #303030;
 .deletas{
   display:inline;
 }
+#search
+{
+  display: inline;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.lado
+{
+  margin-left: 5px;
+}
 </style>
 </head>
 <h1 class="text-center"> Planos Desativados </h1> <hr>
@@ -27,7 +38,22 @@ background-color: #303030;
       <a href="{{route('planos.index')}}">
           <button class="btn btn-secondary">Voltar</button>
         </a>
+       
       </div>  
+      <div class="container"> 
+      <form class="deletas" action="{{route('planos.procurarDP')}}" method="get">
+      <div class="form-group">
+      <div class="input-group">
+  <input type="text" name="search" id="search" class="form-control col-md-4" placeholder="Buscar Planos" />
+  <span class="input-group-btn">
+  <button  type="submit" class="btn btn-primary">Buscar</button>
+  <a href="{{route('planos.desativados')}}">
+          <button class="btn btn-warning lado" form="aa">Recarregar</button>
+        </a>
+  </span>
+  </div>
+  </form>
+  </div>
  <div class="container">   
  @if(session('planoRestaurado'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -36,7 +62,15 @@ background-color: #303030;
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-@endif     
+@endif 
+@if(session('planoExcluido'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{session('planoExcluido')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif  
 <table class="table text-center table-bordered">
   <thead class="text-center">
     <tr>
@@ -59,10 +93,15 @@ background-color: #303030;
       <td>{{$plano->tipo}}</td>
       <td>{{$plano->observacao}}</td>
       <td>
-      <form action="{{route('planos.restore',$plano->id)}}" method="post">  
+      <form class="deletas" action="{{route('planos.restore',$plano->id)}}" method="post">  
         @method('patch')
         @CSRF
         <button type="submit" class="btn btn-success" onclick="return confirm('Você tem certeza que deseja reativar o plano? ')">Restaurar</button>
+        </form>
+        <form class="deletas" action="{{route('planos.excluirPermanente',$plano->id)}}" method="get">  
+        @method('delete')
+        @CSRF
+        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir permanentemente? ')">Excluir</button>
         </form>
       </td>
       @endif
@@ -71,6 +110,9 @@ background-color: #303030;
     @endforeach
   </tbody>
 </table>
+<span>
+{{ $planos->render('pagination::bootstrap-4') }}
+</span>
 </div>
 <script>
 $(".alert-dismissible").fadeTo(5000, 500).slideUp(500, function(){

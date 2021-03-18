@@ -34,6 +34,8 @@ Route::get('alunos/{aluno}/criarAva', 'AlunosController@criarAva')->name('alunos
 Route::put('alunos/avaliacaoCriar/{id}', 'AlunosController@avaliacaoCriar')->name('alunos.avaliacaoCriar');
 Route::get('procurar', 'AlunosController@procurar')->name('alunos.procurar');
 Route::get('procurarT', 'TreinosController@procurarT')->name('treinos.procurarT');
+Route::get('procurarDesativados', 'AlunosController@procurarDesativados')->name('alunos.procurarDesativados');
+Route::get('alunos/excluirPermanente/{id}', 'AlunosController@excluirPermanente')->name('alunos.excluirPermanente');
 });
 
 Route::middleware(['auth','dono'])->group(function() {
@@ -45,4 +47,8 @@ Route::patch('funcionarios/restore/{id}', 'FuncionariosController@restore')->nam
 Route::get('desativadosF', 'FuncionariosController@desativadosF')->name('funcionarios.desativadosF');
 Route::get('procurarF', 'FuncionariosController@procurarF')->name('funcionarios.procurarF');
 Route::get('procurarP', 'PlanosController@procurarP')->name('planos.procurarP');
+Route::get('procurarDP', 'PlanosController@procurarDP')->name('planos.procurarDP');
+Route::get('procurarDF', 'FuncionariosController@procurarDF')->name('funcionarios.procurarDF');
+Route::get('planos/excluirPermanente/{id}', 'PlanosController@excluirPermanente')->name('planos.excluirPermanente');
+Route::get('funcionarios/excluirPermanente/{id}', 'FuncionariosController@excluirPermanente')->name('funcionarios.excluirPermanente');
 });

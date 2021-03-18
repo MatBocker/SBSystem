@@ -20,7 +20,7 @@ class AlunosController extends Controller
      */
     public function index()
     {
-        $alunos = DB::table('alunos')->Paginate(9);
+        $alunos = DB::table('alunos')->whereNull('deleted_at')->Paginate(9);
         return view('alunos', ['alunos' => $alunos]);
     }
 
@@ -133,7 +133,7 @@ class AlunosController extends Controller
 
     public function desativadosA()
     {
-        $alunos = DB::table('alunos')->get();
+        $alunos = DB::table('alunos')->whereNotNull('deleted_at')->paginate(9);
         return view('alunosDesativados', ['alunos' => $alunos]);
     }
 
@@ -232,5 +232,18 @@ class AlunosController extends Controller
         $procura=$request->search;
         $alunos=DB::table('alunos')->where('nome','LIKE','%'.$procura.'%')->paginate();
         return view('alunos', ['alunos' => $alunos]);
+    }
+
+    function procurarDesativados(Request $request)
+    {
+        $procura=$request->search;
+        $alunos=DB::table('alunos')->where('nome','LIKE','%'.$procura.'%')->paginate();
+        return view('alunosDesativados', ['alunos' => $alunos]);
+    }
+
+    function excluirPermanente($id)
+    {
+        $aluno=Aluno::withTrashed()->find($id)->forceDelete();
+        return redirect()->back()->with('alunoExcluido', 'Aluno excluido permanentemente com sucesso!!');
     }
 }
