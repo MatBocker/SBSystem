@@ -41,7 +41,9 @@
                 <li>
                     <a href="{{route('funcionarios.index')}}">Funcionários</a>
                 </li>
-
+                <li>
+                    <a href="{{route('despesas.index')}}">Despesas</a>
+                </li>
                 <li>
                     <a href="#">Sobre</a>
                 </li>

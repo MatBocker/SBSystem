@@ -120,7 +120,7 @@
     </div>
     <div class="form-group col-md-6">
     <label for="obs">Observação</label>
-    <textarea name="obs" class="form-control" id="obs" rows="2"></textarea>
+    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none"></textarea>
   </div>
 </form>
 

@@ -93,7 +93,7 @@ background-color: #303030;
         <form class="deletas" action="{{route('treinos.destroy',$treino->id)}}" method="POST">  
         @method('delete')
         @CSRF
-        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir o treino? ')">Desativar</button>
+        <button  type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja excluir o treino? ')">Excluir</button>
         </form>
       </td>
       @endif

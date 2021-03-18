@@ -78,7 +78,7 @@ background-color: #303030;
       <th scope="col" class="text-center">Nome</th>
       <th scope="col" class="text-center">Preço</th>
       <th scope="col" class="text-center">Tipo</th>
-      <th scope="col" class="text-center">Observação</th>
+      <th scope="col" class="text-center">Desativando em</th>
       <th scope="col" class="text-center">Ação</th>
     </tr>
   </thead>
@@ -91,7 +91,7 @@ background-color: #303030;
       <td>{{$plano->nome}}</td>
       <td>{{$plano->preco}}</td>
       <td>{{$plano->tipo}}</td>
-      <td>{{$plano->observacao}}</td>
+      <td>{{$plano->updated_at}}</td>
       <td>
       <form class="deletas" action="{{route('planos.restore',$plano->id)}}" method="post">  
         @method('patch')

@@ -51,4 +51,10 @@ Route::get('procurarDP', 'PlanosController@procurarDP')->name('planos.procurarDP
 Route::get('procurarDF', 'FuncionariosController@procurarDF')->name('funcionarios.procurarDF');
 Route::get('planos/excluirPermanente/{id}', 'PlanosController@excluirPermanente')->name('planos.excluirPermanente');
 Route::get('funcionarios/excluirPermanente/{id}', 'FuncionariosController@excluirPermanente')->name('funcionarios.excluirPermanente');
+Route::resource('despesas','DespesasController');
+Route::get('pagas', 'DespesasController@pagas')->name('despesas.pagas');
+Route::get('despesas/excluir/{id}', 'DespesasController@excluir')->name('despesas.excluir');
+Route::get('despesas/excluirPaga/{id}', 'DespesasController@excluirPaga')->name('despesas.excluirPaga');
+Route::get('procurarD', 'DespesasController@procurarD')->name('despesas.procurarD');
+Route::get('procurarDD', 'DespesasController@procurarDD')->name('despesas.procurarDD');
 });

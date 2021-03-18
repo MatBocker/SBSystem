@@ -21,7 +21,10 @@ background-color: #303030;
   margin-top: 10px;
 
 }
-
+.h4 .h5
+{
+  display: inline;
+}
 #search
 {
   display: inline;
