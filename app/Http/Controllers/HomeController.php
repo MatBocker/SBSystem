@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Aluno;
+use App\Models\Treino;
+use App\Models\Plano;
+use App\Models\Avaliacao;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class HomeController extends Controller
 {
@@ -23,6 +30,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $alunos = DB::table('alunos')->whereNull('deleted_at')->get();
+        $despesas = DB::table('despesas')->whereNull('deleted_at')->get();
+        $funcs = DB::table('funcionarios')->whereNull('deleted_at')->get();
+        $planos=Aluno::distinct()->count('plano_id');
+        return view('home',compact('alunos','despesas','funcs','planos'));
     }
 }
