@@ -18,7 +18,7 @@ background-color: #303030;
 <link rel="stylesheet" href="../site/style.css">
 <h1 class="text-center"> Dados de {{$aluno->nome}} </h1> <hr>
 <div class="text-center">
-        <a href="{{route('alunos.index')}}">
+        <a href="{{ url()->previous() }}">
           <button class="btn btn-secondary">Voltar</button>
         </a>
       </div>  

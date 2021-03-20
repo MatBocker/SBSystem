@@ -81,7 +81,7 @@ body
   </button>
 </div>
 @endif  
-<table class="table text-center table-bordered ">
+<table class="table text-center table-bordered table-responsive-md ">
   <thead class="text-center">
     <tr>
       <th scope="col" class="text-center">Matricula</th>

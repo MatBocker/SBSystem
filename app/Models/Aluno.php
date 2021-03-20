@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Aluno extends Model
 {
     use SoftDeletes;
-
+    protected $fillable = ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'];
 
     public function treino()
     {

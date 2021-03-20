@@ -23,7 +23,7 @@ background-color: #303030;
         </a>
       </div>  
 <div class="container">
-<table class="table text-center table-bordered ">
+<table class="table text-center table-bordered table-responsive-sm">
   <thead class="text-center">
     <tr>
       <th scope="col" class="text-center">Id</th>

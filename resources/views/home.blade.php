@@ -223,6 +223,23 @@ body
     background-color: #F5F5F5;
 }
 
+table {
+   border: 1px solid #999;
+   border-collapse: collapse;
+   font-family: Georgia, Times, serif;
+   }
+   th {
+   border: 1px solid #999;
+   font-size: 70%;
+   text-transform: uppercase;
+   }
+   td {
+   border: 1px solid #999;
+   height: 5em;
+   width:5em;
+   padding: 5px;
+   vertical-align: top;
+   }
 </style>
 </head>
 <div class="container">
@@ -336,7 +353,59 @@ body
           </div>
           </div>
           </a>
-          </div>
-          </div>
+          <table class="table text-center table-bordered table-responsive-md ">
+  <thead class="text-center">
+    <tr>
+      <th scope="col" class="text-center">Segunda</th>
+      <th scope="col" class="text-center">Terça</th>
+      <th scope="col" class="text-center">Quarta</th>
+      <th scope="col" class="text-center">Quinta</th>
+      <th scope="col" class="text-center">Sexta</th>
+      <th scope="col" class="text-center">Sabado</th>
+      <th scope="col" class="text-center">Domingo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>
+    @foreach($segunda as $seg)
+      <a href="{{route('alunos.show',$seg->id)}}">{{$seg->nome}}</a><br>
+      @endforeach
+      </td>
+      <td>
+    @foreach($terca as $tec)
+      <a href="{{route('alunos.show',$tec->id)}}">{{$tec->nome}}</a><br>
+      @endforeach
+      </td>
+      <td>
+    @foreach($quarta as $qua)
+      <a href="{{route('alunos.show',$qua->id)}}">{{$qua->nome}}</a><br>
+      @endforeach
+      </td>
+      <td>
+      @foreach($quinta as $qui)
+      <a href="{{route('alunos.show',$qui->id)}}">{{$qui->nome}}</a><br>
+      @endforeach
+      </td>
+      <td>
+      @foreach($sexta as $sex)
+      <a href="{{route('alunos.show',$sex->id)}}">{{$sex->nome}}</a><br>
+      @endforeach
+      </td>
+      <td>
+      @foreach($sabado as $sab)
+      <a href="{{route('alunos.show',$sab->id)}}">{{$sab->nome}}</a><br>
+      @endforeach
+      </td>
+      <td>
+      @foreach($domingo as $dog)
+      <a href="{{route('alunos.show',$dog->id)}}">{{$dog->nome}}</a><br>
+      @endforeach
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
 
 @endsection

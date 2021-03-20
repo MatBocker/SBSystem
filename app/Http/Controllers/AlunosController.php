@@ -59,6 +59,27 @@ class AlunosController extends Controller
         $aluno->treino_id=$request->treino;
         $aluno->plano_id=$request->plano;
         $aluno->obs=$request->obs;
+        if (isset($request->segunda)) {
+            $aluno->segunda=true;
+        }
+        if (isset($request->terca)) {
+            $aluno->terca=true;
+        }
+        if (isset($request->quarta)) {
+            $aluno->quarta=true;
+        }
+        if (isset($request->quinta)) {
+            $aluno->quinta=true;
+        }
+        if (isset($request->sexta)) {
+            $aluno->sexta=true;
+        }
+        if (isset($request->sabado)) {
+            $aluno->sabado=true;
+        }
+        if (isset($request->domingo)) {
+            $aluno->domingo=true;
+        }
         $aluno->save();
         return redirect()->route('alunos.index')->with('alunoCriado', 'Aluno criado com sucesso!!');
     }
@@ -113,6 +134,55 @@ class AlunosController extends Controller
         $aluno->treino_id=$request->treino;
         $aluno->plano_id=$request->plano;
         $aluno->obs=$request->obs;
+        if (isset($request->segunda)) {
+            $aluno->segunda=true;
+        }
+        else
+        {
+            $aluno->segunda=false;
+        }
+        if (isset($request->terca)) {
+            $aluno->terca=true;
+        }
+        else
+        {
+            $aluno->terca=false;
+        }
+        if (isset($request->quarta)) {
+            $aluno->quarta=true;
+        }
+        else
+        {
+            $aluno->quarta=false;
+        }
+        if (isset($request->quinta)) {
+            $aluno->quinta=true;
+        }
+        else
+        {
+            $aluno->quinta=false;
+        }
+        if (isset($request->sexta)) {
+            $aluno->sexta=true;
+        }
+        else
+        {
+            $aluno->sexta=false;
+        }
+        if (isset($request->sabado)) {
+            $aluno->sabado=true;
+        }
+        else
+        {
+            $aluno->sabado=false;
+        }
+        if (isset($request->domingo)) {
+            $aluno->domingo=true;
+        }
+        else
+        {
+            $aluno->domingo=false;
+        }
         $aluno->save();
         return redirect()->route('alunos.index')->with('alunoEditado', 'Alterações feita com sucesso!!');
     }

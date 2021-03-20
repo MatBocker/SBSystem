@@ -71,7 +71,7 @@ background-color: #303030;
   </button>
 </div>
 @endif  
-<table class="table text-center table-bordered">
+<table class="table text-center table-bordered table-responsive-sm">
   <thead class="text-center">
     <tr>
       <th scope="col" class="text-center">Id</th>

@@ -7,6 +7,91 @@
 {
   margin-bottom: 20px;
 }
+
+table select {
+    font-family: "ProximaNova",Helvetica,Arial,Verdana,sans-serif;
+    height: 26px;
+    line-height: normal;
+    margin-bottom: 0;
+    padding: 3px;
+}
+
+table th {
+    font-family: "ProximaNovaSemibold" ,Helvetica,Arial,Verdana,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0px 6px 6px 12px;
+    text-align: left;
+    width: 20%;
+}
+
+table td {
+    color: #333333;
+    font-size: 13px;
+    padding: 6px;
+    text-align: left;
+}
+
+.checkbox-group {
+}
+.checkbox-group ul {
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+.checkbox-group ul > li {
+    display: inline;
+}
+.checkbox-group input {
+    float: left;
+}
+.checkbox-group input {
+    display: none;
+}
+.checkbox-group ul > li > label {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: #CCCCCC;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 1px 1px 0;
+    box-shadow: 0 5px 5px -6px rgba(0, 0, 0, 0.8) inset;
+    color: #444444;
+    float: left;
+    font-family: helvetica;
+    font-size: 12px;
+    line-height: 20px;
+    padding: 5px 12px 2px;
+    text-decoration: none;
+}
+.checkbox-group ul > li:first-child > label {
+    border-bottom-left-radius: 4px;
+    border-left-width: 1px;
+    border-top-left-radius: 4px;
+}
+.checkbox-group ul > li:last-child > label {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.checkbox-group ul > li > *:checked + label {
+    background-color: #3399CC;
+    background-image: -moz-linear-gradient(center top , rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
+    color: #FFFFFF;
+}
+.checkbox-group ul > li > *:checked + *:hover, .checkbox-group ul > li > *:checked + label:focus {
+    background-color: #3399CC;
+    background-image: none;
+}
+.checkbox-group ul > li > label:hover, .checkbox-group ul > li > label:focus {
+    background-color: #CCCCCC;
+    background-image: none;
+    color: #FFFFFF;
+    cursor: pointer;
+}
 </style>
 </head>
 <link rel="stylesheet" href="../../site/style.css">
@@ -128,6 +213,48 @@
     <label for="obs">Observação</label>
     <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none">{{ $aluno->obs }}</textarea>
   </div>
+  <div class="form-group col-md-6"> 
+  <label>Dias da Semana</label>
+  <table>
+    <tr>
+	        <td>
+		    <div class="checkbox-group" id="checkboxes">
+                 <ul>
+                 <li>
+                	<input type="checkbox" id="segunda" name="segunda" {{  ($aluno->segunda == 1 ? ' checked' : '') }}/>
+	                <label for="segunda">SEG</label>
+                 </li>
+                 <li>
+                	<input type="checkbox" id="terca" name="terca" {{  ($aluno->terca == 1 ? ' checked' : '') }}/>
+	                <label for="terca">TER</label>
+                 </li>
+                 <li>
+                	<input type="checkbox" id="quarta" name="quarta" {{  ($aluno->quarta == 1 ? ' checked' : '') }}/>
+	                <label for="quarta">QUA</label>
+                 </li>
+                 <li>
+                	<input type="checkbox" id="quinta" name="quinta" {{  ($aluno->quinta == 1 ? ' checked' : '') }}/>
+	                <label for="quinta">QUI</label>
+                 </li>
+                 <li>
+                	<input type="checkbox" id="sexta" name="sexta" {{  ($aluno->sexta == 1 ? ' checked' : '') }}/>
+	                <label for="sexta">SEX</label>
+                 </li>
+                 <li>
+                	<input type="checkbox" id="sabado" name="sabado" {{  ($aluno->sabado == 1 ? ' checked' : '') }}/>
+	                <label for="sabado">SAB</label>
+                 </li>
+                 <li>
+                	<input type="checkbox" id="domingo" name="domingo" {{  ($aluno->domingo == 1 ? ' checked' : '') }}/>
+	                <label for="domingo">DOM</label>
+                 </li>
+                 </ul>				
+          </div>
+			</td>
+		</tr>
+
+</table>
+</div>
 </form>
 
 
