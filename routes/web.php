@@ -36,6 +36,7 @@ Route::get('procurar', 'AlunosController@procurar')->name('alunos.procurar');
 Route::get('procurarT', 'TreinosController@procurarT')->name('treinos.procurarT');
 Route::get('procurarDesativados', 'AlunosController@procurarDesativados')->name('alunos.procurarDesativados');
 Route::get('alunos/excluirPermanente/{id}', 'AlunosController@excluirPermanente')->name('alunos.excluirPermanente');
+Route::get('alunos/{aluno}/pdfTeste', 'AlunosController@pdfTeste')->name('alunos.pdfTeste');
 });
 
 Route::middleware(['auth','dono'])->group(function() {

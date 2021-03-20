@@ -316,4 +316,11 @@ class AlunosController extends Controller
         $aluno=Aluno::withTrashed()->find($id)->forceDelete();
         return redirect()->back()->with('alunoExcluido', 'Aluno excluido permanentemente com sucesso!!');
     }
+
+    function pdfTeste(Aluno $aluno)
+    {
+        $exercicios = treino::find($aluno->treino_id)->exercicio;
+        $pdf = \PDF::loadView('baixar', compact('aluno','exercicios'))->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->stream('aluno.pdf');
+    }
 }

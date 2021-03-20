@@ -21,9 +21,6 @@ background-color: #303030;
         <a href="{{ url()->previous() }}">
           <button class="btn btn-secondary">Voltar</button>
         </a>
-        <a href="{{route('alunos.pdfTeste',$aluno->id)}}">
-          <button class="btn btn-warning">Baixar</button>
-        </a>
       </div>  
 <div class="container">
 
