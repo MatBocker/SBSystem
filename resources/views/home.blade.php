@@ -224,21 +224,36 @@ body
 }
 
 table {
-   border: 1px solid #999;
-   border-collapse: collapse;
-   font-family: Georgia, Times, serif;
-   }
+  font-family: Tahoma, Verdana, sans-serif;
+   margin-top: 25%;
+   border-radius: 12px;
+  box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+  background-color: #FFFFFF;
+}
+  table:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+   
    th {
-   border: 1px solid #999;
-   font-size: 70%;
+   font-size: 120%;
+   font-weight: bold;
    text-transform: uppercase;
+   color: white;
+   background-color:#383838;
+   
    }
    td {
-   border: 1px solid #999;
-   height: 5em;
-   width:5em;
+   height: 20em;
+   width:35em;
    padding: 5px;
    vertical-align: top;
+   font-size: 95%;
+   }
+   td a 
+   {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
    }
 </style>
 </head>
@@ -353,6 +368,7 @@ table {
           </div>
           </div>
           </a>
+          
           <table class="table text-center table-bordered table-responsive-md ">
   <thead class="text-center">
     <tr>
@@ -369,37 +385,37 @@ table {
     <tr>
     <td>
     @foreach($segunda as $seg)
-      <a href="{{route('alunos.show',$seg->id)}}">{{$seg->nome}}</a><br>
+      <a href="{{route('alunos.show',$seg->id)}}">{{$seg->nome}}</a><hr>
       @endforeach
       </td>
       <td>
     @foreach($terca as $tec)
-      <a href="{{route('alunos.show',$tec->id)}}">{{$tec->nome}}</a><br>
+      <a href="{{route('alunos.show',$tec->id)}}">{{$tec->nome}}</a><hr>
       @endforeach
       </td>
       <td>
     @foreach($quarta as $qua)
-      <a href="{{route('alunos.show',$qua->id)}}">{{$qua->nome}}</a><br>
+      <a href="{{route('alunos.show',$qua->id)}}">{{$qua->nome}}</a><hr>
       @endforeach
       </td>
       <td>
       @foreach($quinta as $qui)
-      <a href="{{route('alunos.show',$qui->id)}}">{{$qui->nome}}</a><br>
+      <a href="{{route('alunos.show',$qui->id)}}">{{$qui->nome}}</a><hr>
       @endforeach
       </td>
       <td>
       @foreach($sexta as $sex)
-      <a href="{{route('alunos.show',$sex->id)}}">{{$sex->nome}}</a><br>
+      <a href="{{route('alunos.show',$sex->id)}}">{{$sex->nome}}</a><hr>
       @endforeach
       </td>
       <td>
       @foreach($sabado as $sab)
-      <a href="{{route('alunos.show',$sab->id)}}">{{$sab->nome}}</a><br>
+      <a href="{{route('alunos.show',$sab->id)}}">{{$sab->nome}}</a><hr>
       @endforeach
       </td>
       <td>
       @foreach($domingo as $dog)
-      <a href="{{route('alunos.show',$dog->id)}}">{{$dog->nome}}</a><br>
+      <a href="{{route('alunos.show',$dog->id)}}">{{$dog->nome}}</a><hr>
       @endforeach
       </td>
     </tr>
