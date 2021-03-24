@@ -108,12 +108,12 @@ table td {
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="nome">Nome</label>
-      <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" required>
+      <input name="nome" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú\s]+$" id="nome" placeholder="Nome" required>
     </div>
     
     <div class="form-group col-md-4">
       <label for="rg">RG</label>
-      <input name="rg" type="text" class="form-control" id="rg" placeholder="327920087" required>
+      <input name="rg" type="text" class="form-control" pattern="/^[0-9]{2,3}\.?[0-9]{2,3}\.?[0-9]{3}\-?[A-Za-z0-9]{1}$/" id="rg" placeholder="327920087" required>
     </div>
     <div class="form-group col-md-4">
       <label for="cpf">CPF</label>
@@ -122,11 +122,11 @@ table td {
   </div>
   <div class="form-group col-md-4">
       <label for="telefone">Telefone</label>
-      <input name="telefone" type="text" class="form-control" id="telefone" placeholder="(44) 34434-6424" required>
+      <input name="telefone" type="text" class="form-control" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$"  id="telefone" placeholder="(44) 34434-6424" required>
     </div>
     <div class="form-group col-md-4">
       <label for="email">Email</label>
-      <input name="email" type="email" class="form-control" id="email" placeholder="exemplo@exemplo.com" required>
+      <input name="email" type="email" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="exemplo@exemplo.com" required>
     </div>
   <div class="form-group col-md-2">
       <label for="data">Data de Nascimento</label>
@@ -173,7 +173,7 @@ table td {
     </div>
     <div class="form-group col-md-4">
       <label for="cidade">Cidade</label>
-      <input name="cidade" type="text" class="form-control" id="cidade" placeholder="cidade" required>
+      <input name="cidade" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú\s]+$" id="cidade" placeholder="cidade" required>
     </div>
     <div class="form-group col-md-4">
       <label for="cep">Cep</label>
