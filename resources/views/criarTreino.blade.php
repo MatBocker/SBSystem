@@ -25,11 +25,11 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="titulo">Titulo</label>
-      <input name="titulo" type="text" class="form-control" id="titulo" placeholder="Nome" required>
+      <input name="titulo" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõúç0-9\s]+$" title="Apenas Letras e Números!" id="titulo" placeholder="Nome" required>
     </div>
     <div class="form-group col-md-6">
     <label for="obs">Observação</label>
-    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none"></textarea>
+    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none" required></textarea>
     </div>
     <div class="text-center">
     </div>
@@ -48,10 +48,10 @@
 </thead>
 <tbody>
 <tr>
-<td><input name="nome[]" type="text" class="form-control" required></td>
-<td><input name="peso[]" type="text" class="form-control" required></td>
-<td><input name="repeticoes[]" type="text" class="form-control" required></td>
-<td><input name="series[]" type="text" class="form-control" required></td>
+<td><input name="nome[]" type="text" pattern="[a-zA-Záãâéêíîóôõúç0-9\s]+$" title="Apenas Letras e Números!" class="form-control" required></td>
+<td><input name="peso[]" type="text" pattern="[0-9]+$" title="Apenas Números!" class="form-control" required></td>
+<td><input name="repeticoes[]" type="text" pattern="[0-9]+$" title="Apenas Números!" class="form-control" required></td>
+<td><input name="series[]" type="text" pattern="[0-9]+$" title="Apenas Números!" class="form-control" required></td>
 <td><a href="#" class="btn btn-danger remove">-</a></td>
 </tr>
 </tbody>
@@ -68,10 +68,10 @@ $('.addRow').on('click', function(){
 
 function addRow()
 {
-  var tr = '<tr>'+ '<td>'+'<input name="nome[]" type="text" class="form-control" required></td>'
-  +'<td><input name="peso[]" type="text" class="form-control" required></td>'
-  +'<td><input name="repeticoes[]" type="text" class="form-control" required></td>'
-  +'<td><input name="series[]" type="text" class="form-control" required></td>'
+  var tr = '<tr>'+ '<td>'+'<input name="nome[]" type="text" pattern="[a-zA-Záãâéêíîóôõúç0-9\s]+$" title="Apenas Letras e Números!" class="form-control" required></td>'
+  +'<td><input name="peso[]" type="text" pattern="[0-9]+$" title="Apenas Números!" class="form-control" required></td>'
+  +'<td><input name="repeticoes[]" type="text" pattern="[0-9]+$" title="Apenas Números!" class="form-control" required></td>'
+  +'<td><input name="series[]" type="text" pattern="[0-9]+$" title="Apenas Números!" class="form-control" required></td>'
   +'<td><a href="#" class="btn btn-danger remove">-</a></td>'+
   '</tr>';
   $('tbody').append(tr);

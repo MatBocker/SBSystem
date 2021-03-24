@@ -43,10 +43,10 @@ background-color: #303030;
   
   @foreach($exercicios as $exercicio)
     <tr>
-      <td><input name="nome[]" type="text" class="form-control" id="nome[]" value="{{$exercicio->nome}}" required></td>
-      <td><input name="peso[]" type="text" class="form-control" id="peso[]" value="{{$exercicio->peso}}" required></td>
-      <td><input name="repeticoes[]" type="text" class="form-control" id="repeticoes[]" value="{{$exercicio->repeticoes}}" required></td>
-      <td><input name="series[]" type="text" class="form-control" id="series[]" value="{{$exercicio->series}}" required></td>
+      <td><input name="nome[]" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõúç0-9\s]+$" title="Apenas Letras e Números!" id="nome[]" value="{{$exercicio->nome}}" required></td>
+      <td><input name="peso[]" type="text" class="form-control" pattern="[0-9]+$" title="Apenas Números!" id="peso[]" value="{{$exercicio->peso}}" required></td>
+      <td><input name="repeticoes[]" type="text" class="form-control" pattern="[0-9]+$" title="Apenas Números!" id="repeticoes[]" value="{{$exercicio->repeticoes}}" required></td>
+      <td><input name="series[]" type="text" class="form-control" pattern="[0-9]+$" title="Apenas Números!" id="series[]" value="{{$exercicio->series}}" required></td>
       <td><button  type="submit" class="btn btn-danger" form="editarTreino" name="deletar" value="{{$exercicio->id}}">-</button></td>
     </tr>
     <input name="id[]" type="hidden" class="form-control" id="id[]" value="{{$exercicio->id}}">
