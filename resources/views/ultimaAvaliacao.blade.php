@@ -9,6 +9,9 @@
         <a href="{{route('alunos.index')}}">
           <button class="btn btn-secondary">Voltar</button>
         </a>
+        <a href="{{route('alunos.pdfAva',$aluno->id)}}">
+          <button class="btn btn-warning">Baixar</button>
+        </a>
       </div>  
 <div class="container">
 <hr>

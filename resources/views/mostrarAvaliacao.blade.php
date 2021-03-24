@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 @section('tudo')
 <head>
-<title>Ultima Avaliação</title>
+<title>Avaliação Física</title>
 </head>
 <link rel="stylesheet" href="../../site/style.css">
 <h1 class="text-center"> Avaliação Física de {{$aluno->nome}} </h1> <hr>
@@ -9,7 +9,7 @@
         <a href="{{route('alunos.ava',$aluno->id)}}">
           <button class="btn btn-secondary">Voltar</button>
         </a>
-        <a href="{{route('alunos.pdfAva',$aluno->id)}}">
+        <a href="{{route('alunos.pdfAvaliaca',$ava->id)}}">
           <button class="btn btn-warning">Baixar</button>
         </a>
       </div>  
