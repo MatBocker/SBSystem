@@ -323,4 +323,11 @@ class AlunosController extends Controller
         $pdf = \PDF::loadView('baixar', compact('aluno','exercicios'))->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->stream('aluno.pdf');
     }
+
+    function pdfAva(Aluno $aluno)
+    {
+        $ava = Aluno::find($aluno->id)->avaliacao()->latest()->first();
+        $pdf = \PDF::loadView('baixar', compact('aluno','ava'))->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->stream('aluno.pdf');
+    }
 }

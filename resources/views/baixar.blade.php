@@ -1,51 +1,75 @@
-@extends('layouts.sidebar')
-@section('tudo')
+<!DOCTYPE html>
 <head>
 <title>Visualizar Aluno</title>
 <style>
 
-table {
-  margin-top: 30px;
-}
+table { 
+	width: 90%; 
+	border-collapse: collapse; 
+	margin:10% auto;
+  table-layout:fixed;
+	}
 
-thead{
-color: white;
-background-color: #303030;
-}
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+	background: #eee; 
+	}
+
+th { 
+	background: #383838; 
+	color: white; 
+	font-weight: bold; 
+	}
+
+td, th { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 18px;
+	}
+
+  strong 
+  {
+    font-size: 16px;
+  }
 
 </style>
 </head>
+<body>
 <link rel="stylesheet" href="../site/style.css">
-<h1 class="text-center"> Dados de {{$aluno->nome}} </h1> <hr>
-<div class="text-center">
-        <a href="{{ url()->previous() }}">
-          <button class="btn btn-secondary">Voltar</button>
-        </a>
-      </div>  
+<h1 class="text-center"> Dados de {{$aluno->nome}} </h1> <hr> 
 <div class="container">
 
 <div class="h4">
-<span>Matricula: {{$aluno->id}}</span><br><br>     
-<span>Nome: {{$aluno->nome}}</span><br><br> 
-<span>RG: {{$aluno->rg}}</span><br><br> 
-<span>CPF: {{$aluno->cpf}}</span><br><br> 
-<span>Sexo: {{$aluno->sexo}}</span><br><br> 
-<span>Telefone: {{$aluno->telefone}}</span><br><br> 
-<span>Email: {{$aluno->email}}</span><br><br> 
-<span>Endereço: {{$aluno->endereco}}</span><br><br> 
-<span>Observação: {{$aluno->obs}}</span><br><br> 
-<span>Treino: {{$aluno->treino->titulo}}</span><br><br> 
-<span>Plano: {{$aluno->plano->nome}}</span><br><br> 
+<span><strong>Matricula:</strong> {{$aluno->id}}</span><br><br>     
+<span><strong>Nome:</strong> {{$aluno->nome}}</span><br><br> 
+<span><strong>RG:</strong> {{$aluno->rg}}</span><br><br> 
+<span><strong>CPF:</strong> {{$aluno->cpf}}</span><br><br> 
+<span><strong>Sexo:</strong> {{$aluno->sexo}}</span><br><br> 
+<span><strong>Data de Nascimento:</strong> {{$aluno->nascimento}}</span><br><br> 
+<span><strong>Telefone:</strong> {{$aluno->telefone}}</span><br><br> 
+<span><strong>Email:</strong> {{$aluno->email}}</span><br><br> 
+<span><strong>Endereço:</strong> {{$aluno->endereco}}</span><br><br> 
+<span><strong>Estado:</strong> {{$aluno->estado}}</span><br><br>
+<span><strong>Cidade:</strong> {{$aluno->cidade}}</span><br><br>
+<span><strong>CEP:</strong> {{$aluno->cep}}</span><br><br>
+<span><strong>Observação:</strong> {{$aluno->obs}}</span><br><br> 
+<span><strong>Treino:</strong> {{$aluno->treino->titulo}}</span><br><br> 
+<h1 class="text-center"> Dados do Plano</h1> <hr>
+<span><strong>Plano:</strong> {{$aluno->plano->nome}}</span><br><br> 
+<span><strong>Preço:</strong> {{$aluno->plano->preco}}</span><br><br>
+<span><strong>Tipo:</strong> {{$aluno->plano->tipo}}</span><br><br>  
+<span><strong>Observação:</strong> {{$aluno->plano->observacao}}</span><br><br> 
 </div>
 <hr>
 <h2 class="text-center">Dados do Treino</h2>
-<table class="table text-center table-bordered ">
-  <thead class="text-center">
+<table>
+  <thead>
     <tr>
-      <th scope="col" class="text-center">Nome</th>
-      <th scope="col" class="text-center">Peso</th>
-      <th scope="col" class="text-center">Repetições</th>
-      <th scope="col" class="text-center">Series</th>
+      <th>Nome</th>
+      <th>Peso</th>
+      <th>Repetições</th>
+      <th>Series</th>
     </tr>
   </thead>
   <tbody>
@@ -62,12 +86,6 @@ background-color: #303030;
   </tbody>
 </table>
 </div>
-
-
-
-@endsection
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="{{ asset('site/script.js') }}"></script>
+</body>
+</html>
 
