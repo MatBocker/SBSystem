@@ -24,32 +24,32 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="nome">Nome</label>
-      <input name="nome" type="text" class="form-control" id="nome" value="{{ $funcionario->nome }}" required>
+      <input name="nome" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú\s]+$" title="Apenas Letras!" id="nome" value="{{ $funcionario->nome }}" required>
     </div>
     <div class="form-group col-md-6">
       <label for="salario">Salario</label>
-      <input name="salario" type="text" class="form-control" id="salario" value="{{ $funcionario->salario }}" required>
+      <input name="salario" type="text" class="form-control" pattern="^\d+\.{0,1}\d{0,2}$" title="Apenas numeros, pontos e 2 casas decimais!" id="salario" value="{{ $funcionario->salario }}" required>
     </div>
     <div class="form-group col-md-6">
       <label for="modalidade">Modalidade</label>
-      <input name="modalidade" type="text" class="form-control" id="modalidade" value="{{ $funcionario->modalidade }}" required>
+      <input name="modalidade" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" title="Apenas Letras e Números!" id="modalidade" value="{{ $funcionario->modalidade }}" required>
     </div>
     <div class="form-group col-md-4">
       <label for="rg">RG</label>
-      <input name="rg" type="text" class="form-control" id="rg" value="{{ $funcionario->rg }}" required>
+      <input name="rg" type="text" class="form-control" pattern="^\d{9,10}$" title="9 ou 10 Digitos!" id="rg" value="{{ $funcionario->rg }}" required>
     </div>
     <div class="form-group col-md-4">
       <label for="cpf">CPF</label>
-      <input name="cpf" type="text" class="form-control" id="cpf" value="{{ $funcionario->cpf }}" required>
+      <input name="cpf" type="text" class="form-control" pattern="^\d{11}$" title="11 Digitos!" id="cpf" value="{{ $funcionario->cpf }}" required>
     </div>
   </div>
   <div class="form-group col-md-4">
       <label for="telefone">Telefone</label>
-      <input name="telefone" type="text" class="form-control" id="telefone" value="{{ $funcionario->telefone }}" required>
+      <input name="telefone" type="text" class="form-control" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$" title="Telefone precisa estar nesse formato: (44) 34434-6424  (8 ou 9 digitos!)" id="telefone" value="{{ $funcionario->telefone }}" required>
     </div>
     <div class="form-group col-md-4">
       <label for="email">Email</label>
-      <input name="email" type="email" class="form-control" id="email" value="{{ $funcionario->email }}" required>
+      <input name="email" type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email" value="{{ $funcionario->email }}" required>
     </div>
   <div class="form-group col-md-2">
       <label for="data">Data de Nascimento</label>
@@ -99,23 +99,23 @@
     </div>
     <div class="form-group col-md-4">
       <label for="cidade">Cidade</label>
-      <input name="cidade" type="text" class="form-control" id="cidade" value="{{ $funcionario->cidade }}" required>
+      <input name="cidade" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú\s]+$" title="Apenas Letras!" id="cidade" value="{{ $funcionario->cidade }}" required>
     </div>
     <div class="form-group col-md-4">
       <label for="cep">Cep</label>
-      <input name="cep" type="text" class="form-control" id="cep" value="{{ $funcionario->cep }}" required>
+      <input name="cep" type="text" class="form-control" pattern="^\d{8}$" title="8 Digitos!" id="cep" value="{{ $funcionario->cep }}" required>
     </div>
     <div class="form-group col-md-4">
       <label for="endereco">Endereço</label>
-      <input name="endereco" type="text" class="form-control" id="endereco" value="{{ $funcionario->endereco }}" required>
+      <input name="endereco" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" title="Apenas Letras e Números!" id="endereco" value="{{ $funcionario->endereco }}" required>
     </div>
     <div class="form-group col-md-4">
       <label for="complemento">Complemento</label>
-      <input name="complemento" type="text" class="form-control" id="complemento" value="{{ $funcionario->complemento }}" required>
+      <input name="complemento" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" title="Apenas Letras e Números!" id="complemento" value="{{ $funcionario->complemento }}" required>
     </div>
     <div class="form-group col-md-6">
     <label for="obs">Observação</label>
-    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none">{{ $funcionario->obs }}</textarea>
+    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none" required>{{ $funcionario->obs }}</textarea>
   </div>
   
 </form>

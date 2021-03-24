@@ -24,20 +24,20 @@
   <h2>Dados Pessoais: </h2>  
     <div class="form-group col-md-6">
       <label for="nome">Nome</label>
-      <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" required>
+      <input name="nome" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú\s]+$" title="Apenas Letras!" id="nome" placeholder="Nome" required>
     </div>
     
     <div class="form-group col-md-4">
       <label for="rg">RG</label>
-      <input name="rg" type="text" class="form-control" id="rg" placeholder="327920087" required>
+      <input name="rg" type="text" class="form-control" pattern="^\d{9,10}$" title="9 ou 10 Digitos!" id="rg" placeholder="327920087" required>
     </div>
     <div class="form-group col-md-4">
       <label for="cpf">CPF</label>
-      <input name="cpf" type="text" class="form-control" id="cpf" placeholder="58696256026" required>
+      <input name="cpf" type="text" class="form-control" pattern="^\d{11}$" title="11 Digitos!" id="cpf" placeholder="58696256026" required>
     </div>
   <div class="form-group col-md-4">
       <label for="telefone">Telefone</label>
-      <input name="telefone" type="text" class="form-control" id="telefone" placeholder="(44) 34434-6424" required>
+      <input name="telefone" type="text" class="form-control" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$" title="Telefone precisa estar nesse formato: (44) 34434-6424  (8 ou 9 digitos!)" id="telefone" placeholder="(44) 34434-6424" required>
     </div>
   <div class="form-group col-md-2">
       <label for="data">Data de Nascimento</label>
@@ -86,31 +86,31 @@
     </div>
     <div class="form-group col-md-4">
       <label for="cidade">Cidade</label>
-      <input name="cidade" type="text" class="form-control" id="cidade" placeholder="cidade" required>
+      <input name="cidade" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú\s]+$" title="Apenas Letras!" id="cidade" placeholder="cidade" required>
     </div>
     <div class="form-group col-md-4">
       <label for="cep">Cep</label>
-      <input name="cep" type="text" class="form-control" id="cep" placeholder="69918162" required>
+      <input name="cep" type="text" pattern="^\d{8}$" title="8 Digitos!" class="form-control" id="cep"  placeholder="69918162" required>
     </div>
     <div class="form-group col-md-4">
       <label for="endereco">Endereço</label>
-      <input name="endereco" type="text" class="form-control" id="endereco" placeholder="Bairro exemplo, Rua exemplo 2456" required>
+      <input name="endereco" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" title="Apenas Letras e Números!" id="endereco" placeholder="Bairro exemplo, Rua exemplo 2456" required>
     </div>
     <div class="form-group col-md-4">
       <label for="complemento">Complemento</label>
-      <input name="complemento" type="text" class="form-control" id="complemento" placeholder="Apt...Casa...Etc" required>
+      <input name="complemento" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" title="Apenas Letras e Números!" id="complemento" placeholder="Apt...Casa...Etc" required>
     </div>
     <div class="form-group col-md-4">
       <label for="modalidade">Modalidade</label>
-      <input name="modalidade" type="text" class="form-control" id="modalidade" placeholder="" required>
+      <input name="modalidade" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" title="Apenas Letras e Números!" id="modalidade" placeholder="" required>
     </div>
     <div class="form-group col-md-4">
       <label for="salario">Salario</label>
-      <input name="salario" type="text" class="form-control" id="salario" placeholder="" required>
+      <input name="salario" type="text" class="form-control" pattern="^\d+\.{0,1}\d{0,2}$" title="Apenas numeros, pontos e 2 casas decimais!" id="salario" placeholder="" required>
     </div>
     <div class="form-group col-md-8">
     <label for="obs">Observação</label>
-    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none"></textarea>
+    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none" required></textarea>
   </div>
   
   </div>
@@ -120,7 +120,7 @@
     <h2>Cadastro Sistema:</h2>
     <div class="form-group col-md-4">
       <label for="email">Email</label>
-      <input name="email" type="email" class="form-control" id="email" placeholder="exemplo@exemplo.com" required>
+      <input name="email" type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email" placeholder="exemplo@exemplo.com" required>
     </div>
     <div class="form-group col-md-4">
       <label for="senha">Senha</label>
