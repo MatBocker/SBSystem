@@ -113,11 +113,11 @@ table td {
     
     <div class="form-group col-md-4">
       <label for="rg">RG</label>
-      <input name="rg" type="text" class="form-control" pattern="/^[0-9]{2,3}\.?[0-9]{2,3}\.?[0-9]{3}\-?[A-Za-z0-9]{1}$/" id="rg" placeholder="327920087" required>
+      <input name="rg" type="text" class="form-control" pattern="^\d{9,10}$" id="rg" placeholder="327920087" required>
     </div>
     <div class="form-group col-md-4">
       <label for="cpf">CPF</label>
-      <input name="cpf" type="text" class="form-control" id="cpf" placeholder="58696256026" required>
+      <input name="cpf" type="text" class="form-control" pattern="^\d{11}$" id="cpf" placeholder="58696256026" required>
     </div>
   </div>
   <div class="form-group col-md-4">
@@ -177,15 +177,15 @@ table td {
     </div>
     <div class="form-group col-md-4">
       <label for="cep">Cep</label>
-      <input name="cep" type="text" class="form-control" id="cep" placeholder="69918162" required>
+      <input name="cep" type="text" class="form-control" pattern="^\d{8}$" id="cep" placeholder="69918162" required>
     </div>
     <div class="form-group col-md-4">
       <label for="endereco">Endereço</label>
-      <input name="endereco" type="text" class="form-control" id="endereco" placeholder="Bairro exemplo, Rua exemplo 2456" required>
+      <input name="endereco" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" id="endereco" placeholder="Bairro exemplo, Rua exemplo 2456" required>
     </div>
     <div class="form-group col-md-4">
       <label for="complemento">Complemento</label>
-      <input name="complemento" type="text" class="form-control" id="complemento" placeholder="Apt...Casa...Etc" required>
+      <input name="complemento" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" id="complemento" placeholder="Apt...Casa...Etc" required>
     </div>
     <div class="form-group col-md-2">
       <label for="treino">Treinos</label>
@@ -205,7 +205,7 @@ table td {
     </div>
     <div class="form-group col-md-6">
     <label for="obs">Observação</label>
-    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none"></textarea>
+    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none" required></textarea>
   </div>
   <div class="form-group col-md-6"> 
   <label>Dias da Semana</label>
