@@ -108,21 +108,21 @@ table td {
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="nome">Nome</label>
-      <input name="nome" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú\s]+$" id="nome" placeholder="Nome" required>
+      <input name="nome" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú\s]+$" title="Apenas Letras!" id="nome" placeholder="Nome" required>
     </div>
     
     <div class="form-group col-md-4">
       <label for="rg">RG</label>
-      <input name="rg" type="text" class="form-control" pattern="^\d{9,10}$" id="rg" placeholder="327920087" required>
+      <input name="rg" type="text" class="form-control" pattern="^\d{9,10}$" title="9 ou 10 Digitos!" id="rg" placeholder="327920087" required>
     </div>
     <div class="form-group col-md-4">
       <label for="cpf">CPF</label>
-      <input name="cpf" type="text" class="form-control" pattern="^\d{11}$" id="cpf" placeholder="58696256026" required>
+      <input name="cpf" type="text" class="form-control" pattern="^\d{11}$" title="11 Digitos!" id="cpf" placeholder="58696256026" required>
     </div>
   </div>
   <div class="form-group col-md-4">
       <label for="telefone">Telefone</label>
-      <input name="telefone" type="text" class="form-control" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$"  id="telefone" placeholder="(44) 34434-6424" required>
+      <input name="telefone" type="text" class="form-control" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$" title="Telefone precisa estar nesse formato: (44) 34434-6424  (8 ou 9 digitos!)"  id="telefone" placeholder="(44) 34434-6424" required>
     </div>
     <div class="form-group col-md-4">
       <label for="email">Email</label>
@@ -173,19 +173,19 @@ table td {
     </div>
     <div class="form-group col-md-4">
       <label for="cidade">Cidade</label>
-      <input name="cidade" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú\s]+$" id="cidade" placeholder="cidade" required>
+      <input name="cidade" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú\s]+$" title="Apenas Letras!"  id="cidade" placeholder="cidade" required>
     </div>
     <div class="form-group col-md-4">
       <label for="cep">Cep</label>
-      <input name="cep" type="text" class="form-control" pattern="^\d{8}$" id="cep" placeholder="69918162" required>
+      <input name="cep" type="text" class="form-control" pattern="^\d{8}$" title="8 Digitos!" id="cep" placeholder="69918162" required>
     </div>
     <div class="form-group col-md-4">
       <label for="endereco">Endereço</label>
-      <input name="endereco" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" id="endereco" placeholder="Bairro exemplo, Rua exemplo 2456" required>
+      <input name="endereco" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" title="Apenas Letras e Números!" id="endereco" placeholder="Bairro exemplo, Rua exemplo 2456" required>
     </div>
     <div class="form-group col-md-4">
       <label for="complemento">Complemento</label>
-      <input name="complemento" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" id="complemento" placeholder="Apt...Casa...Etc" required>
+      <input name="complemento" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" title="Apenas Letras e Números!" id="complemento" placeholder="Apt...Casa...Etc" required>
     </div>
     <div class="form-group col-md-2">
       <label for="treino">Treinos</label>

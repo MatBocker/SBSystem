@@ -16,8 +16,8 @@ class CreateAlunoModelsTable extends Migration
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->integer('rg');
-            $table->integer('cpf');
+            $table->string('rg',10);
+            $table->string('cpf',11);
             $table->string('sexo');
             $table->string('telefone');
             $table->date('nascimento');
@@ -25,7 +25,7 @@ class CreateAlunoModelsTable extends Migration
             $table->text('obs');
             $table->string('estado');
             $table->string('cidade');
-            $table->integer('cep');
+            $table->string('cep',8);
             $table->string('endereco');
             $table->string('complemento');
             $table->boolean('segunda')->default(false);
