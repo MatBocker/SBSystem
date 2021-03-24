@@ -26,12 +26,12 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="nome">Nome</label>
-      <input name="nome" type="text" class="form-control" id="nome" value="{{ $plano->nome }}" required>
+      <input name="nome" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" title="Apenas Letras e Números!" id="nome" value="{{ $plano->nome }}" required>
     </div>
     
     <div class="form-group col-md-4">
       <label for="preco">Preço</label>
-      <input name="preco" type="text" class="form-control" id="preco" value="{{ $plano->preco }}" required>
+      <input name="preco" type="text" class="form-control" pattern="^\d+\.{0,1}\d{0,2}$" title="Apenas numeros, pontos e 2 casas decimais!" id="preco" value="{{ $plano->preco }}" required>
     </div>
     <div class="form-group col-md-3">
       <label for="tipo">Tipo</label>
@@ -43,7 +43,7 @@
     </div>
     <div class="form-group col-md-6">
     <label for="obs">Observação</label>
-    <textarea name="obs" class="form-control" id="obs" rows="2">{{ $plano->observacao }}</textarea>
+    <textarea name="obs" class="form-control" id="obs" rows="2" required>{{ $plano->observacao }}</textarea>
     </div>
     </div>
 </form>

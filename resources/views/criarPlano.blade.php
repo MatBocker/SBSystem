@@ -25,12 +25,12 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="nome">Nome</label>
-      <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome" required>
+      <input name="nome" type="text" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" title="Apenas Letras e Números!" class="form-control" id="nome" placeholder="Nome" required>
     </div>
     
     <div class="form-group col-md-4">
       <label for="preco">Preço</label>
-      <input name="preco" type="text" class="form-control" id="preco" placeholder="" required>
+      <input name="preco" type="text" class="form-control" pattern="^\d+\.{0,1}\d{0,2}$" title="Apenas numeros, pontos e 2 casas decimais!" id="preco" placeholder="" required>
     </div>
     <div class="form-group col-md-3">
       <label for="tipo">Tipo</label>
@@ -41,7 +41,7 @@
     </div>
     <div class="form-group col-md-6">
     <label for="obs">Observação</label>
-    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none"></textarea>
+    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none" required></textarea>
     </div>
     </div>
 </form>

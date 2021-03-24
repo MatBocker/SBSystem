@@ -26,12 +26,12 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="nome">Titulo</label>
-      <input name="nome" type="text" class="form-control" id="nome" placeholder="" value="{{$despesa->titulo}}" required>
+      <input name="nome" type="text" class="form-control" pattern="[a-zA-Záãâéêíîóôõú0-9\s]+$" title="Apenas Letras e Números!" id="nome" placeholder="" value="{{$despesa->titulo}}" required>
     </div>
     
     <div class="form-group col-md-4">
       <label for="valor">Valor</label>
-      <input name="valor" type="text" class="form-control" id="valor" value="{{$despesa->valor}}" placeholder="" required>
+      <input name="valor" type="text" class="form-control" pattern="^\d+\.{0,1}\d{0,2}$" title="Apenas numeros, pontos e 2 casas decimais!" id="valor" value="{{$despesa->valor}}" placeholder="" required>
     </div>
     <div class="form-group col-md-4">
       <label for="criada">Data de criação da despesa</label>
@@ -43,7 +43,7 @@
     </div>
     <div class="form-group col-md-6">
     <label for="obs">Observação</label>
-    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none">{{$despesa->observacao}}</textarea>
+    <textarea name="obs" class="form-control" id="obs" rows="2" style="resize:none" required>{{$despesa->observacao}}</textarea>
     </div>
     </div>
 </form>
